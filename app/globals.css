@@ -11,6 +11,7 @@
 :root {
 	--background: #ededed;
 	--foreground: #11ab11;
+	--text: #ededed;
 }
 
 .concert_one_regular {
@@ -19,12 +20,11 @@
 	font-style: normal;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #11ab11;
-    --foreground: #ededed;
-  }
-} */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: #262626;
+	}
+}
 
 html,
 body {
@@ -55,4 +55,9 @@ a {
 	html {
 		color-scheme: dark;
 	}
+}
+
+span.material-symbols-rounded {
+	-webkit-user-select: none;
+	user-select: none;
 }
