@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import { useState, createContext } from "react";
 import MealPlanner from "@/components/MealPlanner/MealPlanner";
 import SideBar from "@/components/SideBar/SideBar";
+import BudgetPlanner from "@/components/BudgetPlanner/BudgetPlanner";
 // import { initFoodAPI, queryFood } from "@/lib/food";
 
 export type List = {
@@ -49,9 +50,10 @@ export default function Home() {
 						</h1>
 						{screen == "Meal Planner" ? (
 							<MealPlanner lists={lists ?? {}} />
-						) : (
-							<></>
-						)}
+						) : screen == "Budget Planner" ? (
+							<BudgetPlanner />
+						) : (<></>)
+						}
 					</div>
 				</ListsContext.Provider>
 			</ScreenContext.Provider>
