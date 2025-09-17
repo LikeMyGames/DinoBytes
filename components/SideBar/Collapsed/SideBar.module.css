@@ -1,0 +1,104 @@
+.side_bar {
+    background-color: var(--foreground);
+    height: calc(100dvh-50px);
+    width: min-content;
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    padding: 25px;
+    gap: 50px;
+    border-radius: calc(100px);
+}
+
+.side_bar_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.side_bar_title_icon_wrapper {
+    height: 85px;
+    width: 85px;
+    background-color: white;
+    border-radius: 50px;
+    border: none;
+}
+
+.side_bar_title_icon {
+    height: 60px;
+    width: 60px;
+    transition: 250ms;
+}
+
+.side_bar_title_icon_wrapper:hover>.side_bar_title_icon {
+    transform: scale(1.05);
+}
+
+.side_bar_redirect_list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    width: 100%;
+    height: min-content;
+    padding: 0px;
+    /* gap: 25px; */
+    justify-items: center;
+    align-items: center;
+}
+
+.side_bar_redirect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    width: max-content;
+    height: min-content;
+    font-size: 24px;
+    padding: 15px;
+    background-color: transparent;
+    border: none;
+    border-radius: 20px;
+    transition: 250ms;
+}
+
+.side_bar_redirect:hover>span {
+    font-size: 50px;
+}
+
+.side_bar_redirect>span {
+    font-size: 45px;
+    transition: 250ms;
+}
+
+.side_bar_redirect_highlighted {
+    background-color: #075E11;
+}
+
+.side_bar_account {
+    width: 100%;
+    height: max-content;
+    display: grid;
+    grid-template-columns: max-content;
+    grid-template-rows: 1fr;
+    gap: 25px;
+    border: none;
+}
+
+.side_bar_account_photo {
+    height: 85px;
+    width: 85px;
+    background-color: grey;
+    color: darkslategray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    border: none;
+}
+
+.side_bar_account_photo>span {
+    font-size: 64px;
+}
