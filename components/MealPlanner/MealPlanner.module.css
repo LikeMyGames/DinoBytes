@@ -1,0 +1,111 @@
+.meal_container {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr;
+    background-color: transparent;
+    border: none;
+    gap: 20px;
+}
+
+.meal_date_container {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    display: flex;
+    height: 100%;
+    min-height: 100px;
+    width: 100%;
+    border-radius: 25px;
+    background-color: var(--tertiary);
+}
+
+.meal_builder {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: 1fr;
+    gap: 20px;
+}
+
+.meal_breakdown {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    width: 200px;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--tertiary);
+    border-radius: 25px;
+    padding-inline: 20px;
+    padding-block: 20px;
+}
+
+.meal_breakdown>h4 {
+    font-size: 32px;
+}
+
+.meal_list_container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.meal_list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content 1fr max-content;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--tertiary);
+    justify-content: center;
+    align-items: center;
+    border-right: solid var(--foreground) 5px;
+}
+
+.meal_list:last-of-type {
+    border-right: none;
+}
+
+.meal_list_title {
+    text-align: center;
+}
+
+.meal_list_add {
+    display: grid;
+    /* justify-content: center; */
+    grid-template-columns: max-content 1fr max-content;
+    align-items: center;
+    width: 100%;
+    height: min-content;
+    background-color: var(--tertiary);
+    border: none;
+}
+
+.meal_list_add>span {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    font-size: 30px;
+    color: var(--foreground);
+    transition: 250ms;
+}
+
+.meal_list_add>h4 {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    font-size: 22px;
+    color: var(--foreground)
+}
+
+.meal_list_add:hover>span {
+    font-size: 35px;
+}

@@ -1,8 +1,9 @@
 'use client'
-import styles from "@/app/page.module.css"
+import styles from "./MealPlanner.module.css"
 // import { useState } from "react"
 import { List } from "@/app/page"
 import { PieChart } from "react-minimal-pie-chart"
+import Icon from "@/components/Icon"
 
 export default function MealPlanner({ lists }: { lists: List }) {
 	console.log(lists)
@@ -79,6 +80,10 @@ export default function MealPlanner({ lists }: { lists: List }) {
 
 							</div>
 						</div>
+						<button className={styles.meal_list_add}>
+							<Icon iconName="add" />
+							<h4 className="concert_one_regular">Add Item</h4>
+						</button>
 					</div>
 					<div className={styles.meal_list}>
 						<h2 className={styles.meal_list_title}>
@@ -92,6 +97,10 @@ export default function MealPlanner({ lists }: { lists: List }) {
 
 							</div>
 						</div>
+						<button className={styles.meal_list_add}>
+							<Icon iconName="add" />
+							<h4 className="concert_one_regular">Add Item</h4>
+						</button>
 					</div>
 					<div className={styles.meal_list}>
 						<h2 className={styles.meal_list_title}>
@@ -105,6 +114,10 @@ export default function MealPlanner({ lists }: { lists: List }) {
 
 							</div>
 						</div>
+						<button className={styles.meal_list_add}>
+							<Icon iconName="add" />
+							<h4 className="concert_one_regular">Add Item</h4>
+						</button>
 					</div>
 					<div className={styles.meal_list}>
 						<h2 className={styles.meal_list_title}>
@@ -113,6 +126,10 @@ export default function MealPlanner({ lists }: { lists: List }) {
 						<div className={styles.meal_list_item_container}>
 
 						</div>
+						<button className={styles.meal_list_add}>
+							<Icon iconName="add" />
+							<h4 className="concert_one_regular">Add Item</h4>
+						</button>
 					</div>
 				</div>
 			</div>
