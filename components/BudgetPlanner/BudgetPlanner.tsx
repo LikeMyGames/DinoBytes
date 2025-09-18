@@ -1,6 +1,6 @@
 import style from "./BudgetPlanner.module.css"
 
-export default function BudgetPlanner() {
+export function BudgetPlanner() {
     return (
         <div className={style.budget_container}>
             <div className={style.budget_store}>
@@ -15,5 +15,5 @@ export default function BudgetPlanner() {
 
             </div>
         </div>
-    ) 
+    )
 }

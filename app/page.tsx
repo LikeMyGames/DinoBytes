@@ -4,6 +4,7 @@ import { useState, createContext } from "react";
 import MealPlanner from "@/components/MealPlanner/MealPlanner";
 import SideBar from "@/components/SideBar/SideBar";
 import { GoalPlanner } from "@/components/GoalPlanner/GoalPlanner";
+import { BudgetPlanner } from "@/components/BudgetPlanner/BudgetPlanner";
 // import { initFoodAPI, queryFood } from "@/lib/food";
 
 export type List = {
@@ -55,6 +56,11 @@ export default function Home() {
 						)}
 						{screen == "Goal Planner" ? (
 							<GoalPlanner />
+						) : (
+							<></>
+						)}
+						{screen == "Budget Planner" ? (
+							<BudgetPlanner />
 						) : (
 							<></>
 						)}
