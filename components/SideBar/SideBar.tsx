@@ -1,12 +1,10 @@
-import { useContext, useState, createContext } from "react";
-import { ScreenContext } from "@/app/page";
+import { useState, createContext } from "react";
 import SideBarExpanded from "./Expanded/SideBar";
 import SideBarCollapsed from "./Collapsed/SideBar"
 
 export const CollaspedContext = createContext<[boolean, (value: boolean) => void]>([false, () => { }])
 
 export default function SideBar() {
-	const [, setScreen] = useContext(ScreenContext)
 	const [collapsed, setCollapsed] = useState<boolean>(false)
 	return (
 		<>

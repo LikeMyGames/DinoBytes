@@ -49,6 +49,13 @@
     font-size: 32px;
 }
 
+.meal_breakdown_pie_container {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
 .meal_list_container {
     display: flex;
     width: 100%;
