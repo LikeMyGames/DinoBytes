@@ -5,6 +5,7 @@ import MealPlanner from "@/components/MealPlanner/MealPlanner";
 import SideBar from "@/components/SideBar/SideBar";
 import { GoalPlanner } from "@/components/GoalPlanner/GoalPlanner";
 import { BudgetPlanner } from "@/components/BudgetPlanner/BudgetPlanner";
+import { Breakdown } from "@/components/Breakdown/Breakdown";
 // import { initFoodAPI, queryFood } from "@/lib/food";
 
 export type List = {
@@ -50,7 +51,7 @@ export default function Home() {
 							{screen}
 						</h1>
 						{screen == "Meal Planner" ? (
-							<MealPlanner lists={lists ?? {}} />
+							<MealPlanner />
 						) : (
 							<></>
 						)}
@@ -61,6 +62,11 @@ export default function Home() {
 						)}
 						{screen == "Budget Planner" ? (
 							<BudgetPlanner />
+						) : (
+							<></>
+						)}
+						{screen == "Breakdown" ? (
+							<Breakdown />
 						) : (
 							<></>
 						)}

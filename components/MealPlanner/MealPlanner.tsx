@@ -1,12 +1,13 @@
 'use client'
 import styles from "./MealPlanner.module.css"
 // import { useState } from "react"
-import { List } from "@/app/page"
+import { List, ListsContext } from "@/app/page"
 import { PieChart, Pie, Cell } from "recharts"
 import Icon from "@/components/Icon"
+import { useContext } from "react"
 
-export default function MealPlanner({ lists }: { lists: List }) {
-	console.log(lists)
+export default function MealPlanner() {
+	const [lists, setLists] = useContext(ListsContext)
 	let protein = 0
 	lists.breakfast?.map((item) => {
 		protein += item.protein
