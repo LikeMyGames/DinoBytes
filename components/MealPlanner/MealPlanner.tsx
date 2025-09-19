@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import styles from "./MealPlanner.module.css"
 // import { useState } from "react"
-import { List, ListsContext } from "@/app/page"
+import { ListsContext } from "@/app/page"
 import { PieChart, Pie, Cell } from "recharts"
 import Icon from "@/components/Icon"
 import { useContext } from "react"
@@ -48,7 +49,7 @@ export default function MealPlanner() {
 		fat += item.fat
 	})
 
-	function renderCustomizedLabel({ cx, cy, midAngle, innerRadius, outerRadius, percent }: { cx: number, cy: number, midAngle: number, innerRadius: number, outerRadius: number, percent: number }): React.ReactElement {
+	const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: any) => {
 		const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
 		const x = cx + radius * Math.cos(-(midAngle ?? 0) * RADIAN);
 		const y = cy + radius * Math.sin(-(midAngle ?? 0) * RADIAN);
@@ -91,9 +92,14 @@ export default function MealPlanner() {
 							Breakfast
 						</h2>
 						<div className={styles.meal_list_item_container}>
-							<div className={styles.meal_list_item}>
+							{
+								lists.breakfast?.map((item, index) => (
+									<div className={styles.meal_list_item} key={index}>
 
-							</div>
+									</div>
+								))
+							}
+
 							<div className={styles.meal_list_item}>
 
 							</div>
@@ -152,5 +158,13 @@ export default function MealPlanner() {
 				</div>
 			</div>
 		</div >
+	)
+}
+
+export function KrogerItemSelect() {
+	return (
+		<div className={styles.item_select}>
+
+		</div>
 	)
 }

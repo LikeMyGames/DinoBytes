@@ -116,3 +116,12 @@
 .meal_list_add:hover>span {
     font-size: 35px;
 }
+
+.item_select {
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}

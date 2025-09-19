@@ -10,10 +10,35 @@
 .goal_week {
     grid-row: 2 / 3;
     grid-column: 1 / 3;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: min-content 1fr;
     background-color: var(--tertiary);
     border-radius: 25px;
+}
+
+.goal_week_day_list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: min-content;
+    gap: 10px;
+    padding: 10px;
+}
+
+.goal_week_day_selector {
+    height: 100%;
+    background-color: var(--foreground);
+    color: var(--text);
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: 5px;
+    font-size: 14px;
+    transition: 125ms;
+}
+
+.goal_week_day_selector:hover {
+    font-size: 16px;
 }
 
 .goal_all {
@@ -34,6 +59,16 @@
     border-radius: 25px;
     justify-content: center;
     align-items: center;
+    padding: 10px;
+}
+
+.goal_success_chart_container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    margin-top: 10px;
+    left: -30px;
 }
 
 .goal_success_chart {

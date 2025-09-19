@@ -1,36 +1,61 @@
-import { Bar, BarChart, CartesianGrid, ResponsiveContainer, XAxis, YAxis } from "recharts"
+import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 import style from "./GoalPlanner.module.css"
 
 export function GoalPlanner() {
 	const GoalSuccessData = [
-		{ month: "January", numSuccess: 5 },
-		{ month: "Febuary", numSuccess: 2 },
-		{ month: "March", numSuccess: 6 },
-		{ month: "April", numSuccess: 16 },
-		{ month: "May", numSuccess: 19 },
-		{ month: "June", numSuccess: 31 },
-		{ month: "July", numSuccess: 9 },
-		{ month: "August", numSuccess: 1 },
-		{ month: "September", numSuccess: 25 },
-		{ month: "October", numSuccess: 13 },
-		{ month: "November", numSuccess: 23 },
-		{ month: "December", numSuccess: 27 },
+		{ month: "January", Successes: 31 },
+		{ month: "Febuary", Successes: 28 },
+		{ month: "March", Successes: 30 },
+		{ month: "April", Successes: 31 },
+		{ month: "May", Successes: 30 },
+		{ month: "June", Successes: 31 },
+		{ month: "July", Successes: 31 },
+		{ month: "August", Successes: 30 },
+		{ month: "September", Successes: 19 },
+		{ month: "October", Successes: 0 },
+		{ month: "November", Successes: 0 },
+		{ month: "December", Successes: 0 },
 	]
 
 	return (
 		<div className={style.goal_container}>
 			<div className={style.goal_week}>
-
+				<div className={style.goal_week_day_list}>
+					<button type="button" className={`${style.goal_week_day_selector} concert_one_regular`}>
+						Monday
+					</button>
+					<button type="button" className={`${style.goal_week_day_selector} concert_one_regular`}>
+						Tuesday
+					</button>
+					<button type="button" className={`${style.goal_week_day_selector} concert_one_regular`}>
+						Wednesday
+					</button>
+					<button type="button" className={`${style.goal_week_day_selector} concert_one_regular`}>
+						Thursday
+					</button>
+					<button type="button" className={`${style.goal_week_day_selector} concert_one_regular`}>
+						Friday
+					</button>
+					<button type="button" className={`${style.goal_week_day_selector} concert_one_regular`}>
+						Saturday
+					</button>
+					<button type="button" className={`${style.goal_week_day_selector} concert_one_regular`}>
+						Sunday
+					</button>
+				</div>
 			</div>
 			<div className={style.goal_all}>
 
+
 			</div>
 			<div className={style.goal_success}>
-				<ResponsiveContainer>
-					<BarChart width={10} height={10} className={style.goal_success_chart} data={GoalSuccessData}>
+				<h3>Success</h3>
+				<ResponsiveContainer className={style.goal_success_chart_container}>
+					<BarChart className={style.goal_success_chart} data={GoalSuccessData} margin={{ top: 10, right: 10, left: 10, bottom: 10 }}>
 						<XAxis dataKey={"month"} />
 						<YAxis />
-						<Bar dataKey="numSuccess" fill="#11ab11" />
+						<Tooltip wrapperStyle={{ backgroundColor: "var(--foreground)", color: "var(--text)" }} />
+						<Bar dataKey="Successes" fill="#11ab11" />
 					</BarChart>
 				</ResponsiveContainer>
 			</div>
