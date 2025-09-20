@@ -15,19 +15,56 @@
     grid-column: 1/2;
     border-radius: 25px;
     padding: 10px;
-    display: flex;
-    justify-content: center;
-    /*x axis
-    /* align-items: center; */
+    display: grid;
+    text-align: center;
+      grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr min-content;
     background-color: var(--tertiary);
 }
 
 .store_info {
     width: 100%;
-    text-align: left;
+    text-align: left; 
     margin-top: 25px;
 }
 
+.store_info>h3 {
+    font-size: 20px;
+}
+
+.store_list {
+    padding-left: 50px;
+}
+.store_change {
+    justify-self: flex-end;
+    background-color: var(--tertiary);
+    border: none;
+    display: grid;
+    /* justify-content: center; */
+    grid-template-columns: max-content 1fr max-content;
+    align-items: center;
+    width: 100%;
+    height: min-content;
+}
+
+.store_change>span {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    font-size: 30px;
+    color: var(--foreground);
+    transition: 250ms;
+}
+
+.store_change>h4 {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    font-size: 22px;
+    color: var(--foreground)
+}
+
+.store_change:hover>span {
+    font-size: 35px;
+}
 .budget_store>h2 {
     font-size: 28px;
 }
@@ -109,8 +146,60 @@
     grid-column: 2/3;
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
 .budget_shopping>h2 {
     font-size: 28px;
+}
+.shopping_list{
+    justify-self: flex-end;
+    border-radius: 25px;
+    padding: 10px;
+    display: grid;
+    text-align: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr min-content;
+    background-color: var(--tertiary);
+}
+.shopping_info{
+    display: grid;
+    text-align: left;
+     grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr min-content;
+    justify-content: left;
+    margin-top: 100px;
+}
+.shopping_info_dairy {
+    justify-content: left;
+}
+.add_item {
+    justify-self: flex-end;
+    background-color: var(--tertiary);
+    border: none;
+    display: grid;
+    /* justify-content: center; */
+    grid-template-columns: max-content 1fr max-content;
+    align-items: center;
+    width: 100%;
+    height: min-content;
+}
+
+.add_item>span {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    font-size: 30px;
+    color: var(--foreground);
+    transition: 250ms;
+}
+
+.add_item>h4 {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    font-size: 22px;
+    color: var(--foreground)
+}
+
+.add_item:hover>span {
+    font-size: 35px;
 }
