@@ -8,11 +8,18 @@ import { BudgetPlanner } from "@/components/BudgetPlanner/BudgetPlanner";
 import { Breakdown } from "@/components/Breakdown/Breakdown";
 // import { initFoodAPI, queryFood } from "@/lib/food";
 
+export type User = {
+	name?: string,
+	history?: StringIndexedArray<List>[],
+
+}
+
 export type List = {
 	breakfast?: Item[],
 	lunch?: Item[],
 	dinner?: Item[],
-	snacks?: Item[]
+	snacks?: Item[],
+	logged?: boolean
 }
 
 export type Item = {
@@ -20,11 +27,16 @@ export type Item = {
 	protein: number,
 	carbs: number,
 	fat: number,
-	calories: 1820
+	calories: number
+}
+
+export interface StringIndexedArray<T> {
+	[index: string]: T
 }
 
 export const ScreenContext = createContext<[string, (value: string) => void]>(["Breakdown", () => { }])
 export const ListsContext = createContext<[List, (value: List) => void]>([{}, () => { }])
+export const UserContext = createContext<[User, (value: User) => void]>([{}, () => { }])
 
 export default function Home() {
 	const [screen, setScreen] = useState<string>("Breakdown")
@@ -37,9 +49,15 @@ export default function Home() {
 				fat: 60,
 				calories: 1820,
 			}
-		] as Item[]
+		] as Item[],
+		logged: true
 	})
-
+	const [user, setUser] = useState<User>({
+		name: "Temp Name",
+		history: [
+			{ "9/19/2025": lists },
+		]
+	})
 
 	return (
 		<div className={`${styles.page} concert_one_regular`}>
