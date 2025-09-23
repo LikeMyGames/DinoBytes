@@ -118,10 +118,90 @@
 }
 
 .item_select {
-    background-color: black;
+    background-color: #00000033;
     height: 100vh;
     width: 100vw;
     position: absolute;
     left: 0px;
     top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item_select_card {
+    background-color: var(--foreground);
+    width: max-content;
+    height: max-content;
+    border-radius: 25px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.item_select_type_select {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: max-content max-content 1fr min-content;
+    gap: 10px;
+}
+
+.item_select_type_select>button {
+    padding: 10px;
+    background-color: var(--tertiary);
+    border: none;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 125ms;
+    font-size: 24px;
+}
+
+.item_select_type_select>button:hover {
+    transform: scale(1.05);
+}
+
+.item_select_type_select_close {
+    grid-column: 4 / 5;
+    background-color: transparent;
+    border: none;
+    color: var(--text);
+}
+
+.item_select_type_select_close>span {
+    font-size: 28px;
+}
+
+.item_select_chooser {
+    background-color: var(--tertiary);
+    min-height: 100px;
+    border-radius: 15px;
+    width: 100%;
+    padding: 5px;
+}
+
+.item_select_chooser_search {
+    padding: 5px;
+    border-radius: 10px;
+    background-color: var(--foreground);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item_select_chooser_search>input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
