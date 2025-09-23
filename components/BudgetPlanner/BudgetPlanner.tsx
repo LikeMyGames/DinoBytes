@@ -12,7 +12,7 @@ export function BudgetPlanner() {
                     <h3>
                         Address:
                     </h3>
-                    <ul className ={style.store_list}>
+                    <ul className={style.store_list}>
                         <li>
                             Bla blah blahhhh
                         </li>
@@ -46,11 +46,11 @@ export function BudgetPlanner() {
                             Total Weekly Cost:
                         </h3>
 
-                        
+
                     </div>
                     <h3 className={style.budget_cost_total}>
-                            $
-                        </h3>
+                        $
+                    </h3>
                 </div>
 
                 <button className={style.budget_change}>
@@ -63,18 +63,33 @@ export function BudgetPlanner() {
                     Shopping List
 
                 </h2>
-                <div className = {style.shopping_info}>
-                    <h3>
-                        Dairy:
-                    </h3>
-                    <ul className = {style.shopping_info_dairy}>
-                        
+                <div className={style.shopping_info}>
+
+                    <ul >
+                        <h3>
+                            Dairy:
+                        </h3>
+                        <div className={style.shopping_info_dairy}>
+                            <li>
+                                MILKKKK
+                            </li>
+                            <li>
+                                CHEEESEE
+                            </li>
+                        </div>
+
                     </ul>
-                    <h3>
-                        Meat:
-                    </h3>
+
                     <ul>
-                     
+                        <h3>
+                            Meat:
+                        </h3>
+                        <div className={style.shopping_info_meat}>
+                            <li>
+                                STEAK
+                            </li>
+                        </div>
+
                     </ul>
                 </div>
                 <button className={style.add_item}>
@@ -82,7 +97,7 @@ export function BudgetPlanner() {
                     <h4 className="concert_one_regular">Add item</h4>
                 </button>
             </div>
-            
+
         </div>
     )
 }

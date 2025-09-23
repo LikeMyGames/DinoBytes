@@ -146,9 +146,9 @@
     padding: 10px;
     border-radius: 25px;
     grid-column: 2/3;
-    display: flex;
-    justify-content: center;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr min-content;
 }
 
 .budget_shopping>h2 {
@@ -156,27 +156,37 @@
 }
 
 .shopping_list {
-    justify-self: flex-end;
+    justify-self: center;
+    align-self: center;
     border-radius: 25px;
     padding: 10px;
     display: grid;
     text-align: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     grid-template-columns: 1fr;
     grid-template-rows: min-content 1fr min-content;
     background-color: var(--tertiary);
+
 }
 
 .shopping_info {
     display: grid;
     text-align: left;
+    padding-left: 10px;
     grid-template-columns: 1fr;
     grid-template-rows: min-content 1fr min-content;
     justify-content: left;
-    margin-top: 100px;
 }
 
 .shopping_info_dairy {
     justify-content: left;
+    padding-left: 50px;
+}
+
+.shopping_info_meat {
+    justify-content: left;
+    padding-left: 50px;
 }
 
 .add_item {
