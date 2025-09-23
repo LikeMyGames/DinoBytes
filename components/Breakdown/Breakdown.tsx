@@ -7,18 +7,26 @@ export function Breakdown() {
             <div className={style.breakdown_calories}>
                 <h1>Calories:</h1>
                 <div className={style.calories_count}>
-                    
+                    0
                 </div>
             </div>
             <div className={style.breakdown_budget_planner}>
                 <h1>Budget Planner</h1>
-                
+                <p>This week's budget:</p>
+				<p>$ 1000</p>
+				<div className={style.budget_planner_store}>
+					<p>Store: Ralphs 1982</p>
+					<button className={`${style.budget_planner_change_store} concert_one_regular`}>
+						Change
+					</button>
+				</div>
+				<p>Total Cost: $765</p>
             </div>
-            <div className={style.goal_week}>
-				<button className={`${style.goal_week_day} concert_one_regular`}>
+            <div className={style.breakdown_goal_week}>
+				<button className={`${style.breakdown_goal_week_day} concert_one_regular`}>
 					M
 					<Icon iconName={"star"} />
-					<div className={style.goal_week_day_data}>
+					<div className={style.breakdown_goal_week_day_data}>
 						<div>
 							<p>Weight</p>
 							<p>150 lbs</p>
@@ -29,9 +37,9 @@ export function Breakdown() {
 						</div>
 					</div>
 				</button>
-				<button className={`${style.goal_week_day} concert_one_regular`}>
+				<button className={`${style.breakdown_goal_week_day} concert_one_regular`}>
 					T
-					<div className={style.goal_week_day_data}>
+					<div className={style.breakdown_goal_week_day_data}>
 						<div>
 							<p>Weight</p>
 							<p>150 lbs</p>
@@ -42,9 +50,9 @@ export function Breakdown() {
 						</div>
 					</div>
 				</button>
-				<button className={`${style.goal_week_day} concert_one_regular`}>
+				<button className={`${style.breakdown_goal_week_day} concert_one_regular`}>
 					W
-					<div className={style.goal_week_day_data}>
+					<div className={style.breakdown_goal_week_day_data}>
 						<div>
 							<p>Weight</p>
 							<p>150 lbs</p>
@@ -55,10 +63,10 @@ export function Breakdown() {
 						</div>
 					</div>
 				</button>
-				<button className={`${style.goal_week_day} concert_one_regular`}>
+				<button className={`${style.breakdown_goal_week_day} concert_one_regular`}>
 					Th
 					<Icon iconName={"star"} />
-					<div className={style.goal_week_day_data}>
+					<div className={style.breakdown_goal_week_day_data}>
 						<div>
 							<p>Weight</p>
 							<p>--</p>
@@ -69,9 +77,9 @@ export function Breakdown() {
 						</div>
 					</div>
 				</button>
-				<button className={`${style.goal_week_day} concert_one_regular`}>
+				<button className={`${style.breakdown_goal_week_day} concert_one_regular`}>
 					F
-					<div className={style.goal_week_day_data}>
+					<div className={style.breakdown_goal_week_day_data}>
 						<div>
 							<p>Weight</p>
 							<p>150 lbs</p>
@@ -82,9 +90,9 @@ export function Breakdown() {
 						</div>
 					</div>
 				</button>
-				<button className={`${style.goal_week_day} concert_one_regular`}>
+				<button className={`${style.breakdown_goal_week_day} concert_one_regular`}>
 					S
-					<div className={style.goal_week_day_data}>
+					<div className={style.breakdown_goal_week_day_data}>
 						<div>
 							<p>Weight</p>
 							<p>150 lbs</p>
@@ -95,9 +103,9 @@ export function Breakdown() {
 						</div>
 					</div>
 				</button>
-				<button className={`${style.goal_week_day} concert_one_regular`}>
+				<button className={`${style.breakdown_goal_week_day} concert_one_regular`}>
 					Su
-					<div className={style.goal_week_day_data}>
+					<div className={style.breakdown_goal_week_day_data}>
 						<div>
 							<p>Weight</p>
 							<p>150 lbs</p>
