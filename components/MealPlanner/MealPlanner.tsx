@@ -6,6 +6,7 @@ import { Item, ListsContext } from "@/app/page"
 import { PieChart, Pie, Cell } from "recharts"
 import Icon from "@/components/Icon"
 import { createContext, useContext, useEffect, useState } from "react"
+import { queryFood } from "@/lib/food"
 
 const AddingItemContext = createContext<[boolean, (value: boolean) => void]>([false, () => { }])
 
@@ -108,7 +109,7 @@ export default function MealPlanner() {
 
 							</div>
 						</div>
-						<button className={style.meal_list_add} onClick={() => setAddingItem(true)}>
+						<button className={style.meal_list_add} onClick={() => queryFood("5013665112235")}>
 							<Icon iconName="add" />
 							<h4 className="concert_one_regular">Add Item</h4>
 						</button>

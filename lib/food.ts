@@ -1,8 +1,9 @@
+'use server'
+
 const FOOD_API_URL = "https://world.openfoodfacts.net/"
 
-export function queryFood() {
-    let product = null
-    fetch(FOOD_API_URL + "api/v2/products.json?search=chicken", {
+export function queryFood(barcode: string) {
+    fetch(FOOD_API_URL + `api/v2/products/${barcode}?fields=nutriscore_data,nutrition_grade`, {
         method: 'GET',
         headers: { Authorization: 'Basic ' + btoa('off:off') },
     })
@@ -14,8 +15,6 @@ export function queryFood() {
         })
         .then(data => {
             console.log(data)
-            product = data
-            console.log(product)
         })
 }
 
