@@ -109,7 +109,7 @@ export default function MealPlanner() {
 
 							</div>
 						</div>
-						<button className={style.meal_list_add} onClick={() => queryFood("5013665112235")}>
+						<button className={style.meal_list_add} onClick={() => setAddingItem(true)}>
 							<Icon iconName="add" />
 							<h4 className="concert_one_regular">Add Item</h4>
 						</button>
