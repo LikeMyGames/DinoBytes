@@ -6,6 +6,7 @@ import { Item, ListsContext } from "@/app/page"
 import { PieChart, Pie, Cell } from "recharts"
 import Icon from "@/components/Icon"
 import { createContext, useContext, useEffect, useState } from "react"
+import { KrogerAuth } from "@/lib/kroger"
 
 const AddingItemContext = createContext<[boolean, (value: boolean) => void]>([false, () => { }])
 
@@ -214,6 +215,7 @@ export function ItemSelect() {
 												console.log(searchQuery)
 												checkQuery();
 											}} />
+										<button onClick={() => { KrogerAuth() }}>Auth</button>
 									</div>
 									<div className={style.item_select_chooser_container}>
 										{
