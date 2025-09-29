@@ -6,6 +6,7 @@ const baseURL = 'https://api.kroger.com/v2/products'
 
 type KrogerItem = {
 	productID: string,
+	productName: string,
 	productsPageURI: string,
 	brand?: string,
 	price: KrogerPrice
