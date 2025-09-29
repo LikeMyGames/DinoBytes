@@ -7,6 +7,7 @@ import { PieChart, Pie, Cell } from "recharts"
 import Icon from "@/components/Icon"
 import { createContext, useContext, useEffect, useState } from "react"
 import { KrogerAuth } from "@/lib/kroger"
+import { queryFood } from "@/lib/food"
 
 const AddingItemContext = createContext<[boolean, (value: boolean) => void]>([false, () => { }])
 
@@ -182,7 +183,7 @@ export function ItemSelect() {
 				return
 			}
 			console.log("querying kroger api")
-			// KrogerGetProducts(searchQuery);
+			queryFood(searchQuery);
 		}, 1000)
 	}
 

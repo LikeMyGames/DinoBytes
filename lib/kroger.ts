@@ -43,7 +43,7 @@ export async function KrogerAuth(): Promise<string> {
 			scope: "product.compact"
 		}).toString()
 	})
-	// console.log(res)
+	console.log(res)
 	let data = null
 	if (res) {
 		data = await res.json()

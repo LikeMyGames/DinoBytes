@@ -7,11 +7,12 @@ export async function queryFood(barcode: string) {
         method: 'GET',
         headers: { Authorization: 'Basic ' + btoa('off:off') },
     })
-        .then(req => {
-            if (!req.ok) {
+        .then(res => {
+            console.log(res)
+            if (!res.ok) {
                 return;
             }
-            req.json();
+            res.json();
         })
         .then(data => {
             console.log(data)
