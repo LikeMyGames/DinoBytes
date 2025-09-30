@@ -1,22 +1,23 @@
 'use server'
 
+import { OpenFoodFactsApi } from 'openfoodfac-ts';
 const FOOD_API_URL = "https://world.openfoodfacts.net/"
 
 export async function queryFood(barcode: string) {
-    fetch(FOOD_API_URL + `api/v2/products/${barcode}?fields=nutriscore_data,nutrition_grade`, {
-        method: 'GET',
-        headers: { Authorization: 'Basic ' + btoa('off:off') },
-    })
-        .then(res => {
-            console.log(res)
-            if (!res.ok) {
-                return;
-            }
-            res.json();
-        })
-        .then((data) => {
-            console.log(data)
-        })
+    const openFoodFactsApi = new OpenFoodFactsApi();
+    try {
+        const product = await openFoodFactsApi.findProductByBarcode(barcode);
+        if (product) {
+            console.log(`Product Name: ${product.product_name}`);
+            console.log(`Brands: ${product.brands}`);
+            console.log(`Categories: ${product.categories}`);
+            console.log(`Nutriscore: ${product.nutrition_grades}`);
+        } else {
+            console.log(`Product with barcode ${barcode} not found.`);
+        }
+    } catch (error) {
+        console.error('Error fetching product:', error);
+    }
 }
 
 export async function initFoodAPI() {
