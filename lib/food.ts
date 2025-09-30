@@ -14,7 +14,7 @@ export async function queryFood(barcode: string) {
             }
             res.json();
         })
-        .then(data => {
+        .then((data) => {
             console.log(data)
         })
 }
