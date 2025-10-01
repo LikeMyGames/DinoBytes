@@ -13,9 +13,21 @@ type KrogerItem = {
 	image?: string,
 	stock?: "HIGH" | "LOW" | "TEMPORARILY_OUT_OF_STOCK",
 	upc: string
+	productID: string,
+	productName: string,
+	productsPageURI: string,
+	brand?: string,
+	price: KrogerPrice
+	image?: string,
+	stock?: "HIGH" | "LOW" | "TEMPORARILY_OUT_OF_STOCK",
+	upc: string
 }
 
 type KrogerPrice = {
+	regular: number,
+	promo: number,
+	regularPerUnitEstimate: number,
+	promoPerUnitEstimate: number,
 	regular: number,
 	promo: number,
 	regularPerUnitEstimate: number,
@@ -25,6 +37,7 @@ type KrogerPrice = {
 let TOKEN = ""
 
 export async function GetToken() {
+	return TOKEN
 	return TOKEN
 }
 
@@ -44,7 +57,7 @@ export async function KrogerAuth(): Promise<string> {
 			scope: "product.compact"
 		}).toString()
 	})
-	console.log(res)
+	// console.log(res)
 	let data = null
 	if (res) {
 		data = await res.json()
@@ -58,23 +71,6 @@ export async function KrogerAuth(): Promise<string> {
 }
 
 export async function SearchKrogerAPI(query: string): Promise<KrogerItem[]> {
-	// const products: KrogerItem[] = []
-	fetch(`${baseURL}?filter.term=${query}`, {
-		method: 'GET',
-		headers: {
-			"Accept": "application/json",
-			"Authorization": `Bearer ${TOKEN}`
-		}
-	})
-		.then(req => {
-			if (!req.ok) {
-				return
-			}
-			req.json()
-		})
-		.then(data => {
-
-		})
 	const products: KrogerItem[] = []
 	fetch(`${baseURL}?filter.term=${query}`, {
 		method: 'GET',
@@ -92,7 +88,14 @@ export async function SearchKrogerAPI(query: string): Promise<KrogerItem[]> {
 		.then((data: any) => {
 			data.data.forEach((val: any, i: number) => {
 				products[products.length] = {
-					productID: val.productID,
+					productID: val.productID as string,
+					productName: val.productName as string,
+					productsPageURI: val.productsPageURI as string,
+					brand: val.brand as string,
+					price: val.price as KrogerPrice,
+					image: val.image as string,
+					stock: val.stock as string,
+					upc: val.upc as string,
 					//add other values for products
 				} as KrogerItem
 				val.productID
@@ -106,6 +109,5 @@ export async function SearchKrogerAPI(query: string): Promise<KrogerItem[]> {
 			})
 		})
 
-	return []
-	return [{}] as KrogerItem[]
+	return products
 }
