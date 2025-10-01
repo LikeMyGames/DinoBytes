@@ -74,7 +74,7 @@ export async function SearchKrogerAPI(query: string): Promise<KrogerItem[]> {
 			req.json()
 		})
 		.then((data: any) => {
-			data.data.forEach((val: any, i: number) => {
+			data.data.forEach((val: KrogerItem, i: number) => {
 				products[products.length] = {
 					productID: val.productID as string,
 					productName: val.productName as string,
@@ -86,14 +86,6 @@ export async function SearchKrogerAPI(query: string): Promise<KrogerItem[]> {
 					upc: val.upc as string,
 					//add other values for products
 				} as KrogerItem
-				val.productID
-				val.productName
-				val.productsPageURI
-				val.brand
-				val.price
-				val.image
-				val.stock
-				val.upc
 			})
 		})
 

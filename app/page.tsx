@@ -6,6 +6,7 @@ import SideBar from "@/components/SideBar/SideBar";
 import { GoalPlanner } from "@/components/GoalPlanner/GoalPlanner";
 import { BudgetPlanner } from "@/components/BudgetPlanner/BudgetPlanner";
 import { Breakdown } from "@/components/Breakdown/Breakdown";
+import Settings from "@/components/Settings/Settings";
 // import { initFoodAPI, queryFood } from "@/lib/food";
 
 export type User = {
@@ -85,6 +86,11 @@ export default function Home() {
 						)}
 						{screen == "Breakdown" ? (
 							<Breakdown />
+						) : (
+							<></>
+						)}
+						{screen == "Settings" ? (
+							<Settings />
 						) : (
 							<></>
 						)}
