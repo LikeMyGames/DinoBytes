@@ -13,21 +13,9 @@ type KrogerItem = {
 	image?: string,
 	stock?: "HIGH" | "LOW" | "TEMPORARILY_OUT_OF_STOCK",
 	upc: string
-	productID: string,
-	productName: string,
-	productsPageURI: string,
-	brand?: string,
-	price: KrogerPrice
-	image?: string,
-	stock?: "HIGH" | "LOW" | "TEMPORARILY_OUT_OF_STOCK",
-	upc: string
 }
 
 type KrogerPrice = {
-	regular: number,
-	promo: number,
-	regularPerUnitEstimate: number,
-	promoPerUnitEstimate: number,
 	regular: number,
 	promo: number,
 	regularPerUnitEstimate: number,
