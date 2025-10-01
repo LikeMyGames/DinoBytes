@@ -1,0 +1,71 @@
+.settings_container {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.settings_profile_info {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    display: flex;
+    background-color: var(--tertiary);
+    border-radius: 25px;
+    padding: 10px;
+    font-size: 40px;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.profile_info_account_photo {
+    height: 150px;
+    width: 150px;
+    background-color: grey;
+    color: darkslategray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 75px;
+}
+
+.profile_info_account_photo>span {
+    font-size: 75px;
+}
+
+.profile_info_change_name {
+     width: 25%;
+    height: 40px;
+    display: flex;
+    background-color: var(--foreground);
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    border-radius: 25px;
+}
+
+.other {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    background-color: var(--tertiary);
+    border-radius: 25px;
+    flex-direction: column;
+    padding: 20px;
+    font-size: 30px;
+    left: 0;
+}
+
+.other1 {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    display: flex;
+    background-color: var(--tertiary);
+    border-radius: 25px;
+    flex-direction: column;
+    padding: 20px;
+    font-size: 30px;
+    left: 0;
+}
