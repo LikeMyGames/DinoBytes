@@ -13,10 +13,14 @@ export default function Settings() {
 					Change
 				</button>
             </div>
-            <div className={style.other}>
-
+            <div className={style.email}>
+                Email address:
+                <p>maclex3983@gmail.com</p>
+                <button className={`${style.email_change_email} concert_one_regular`}>
+					Change
+				</button>
             </div>
-            <div className={style.other1}>
+            <div className={style.other}>
                 
             </div>
         </div>
