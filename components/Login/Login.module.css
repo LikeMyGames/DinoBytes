@@ -1,0 +1,128 @@
+.card {
+    background-color: var(--foreground);
+    height: max-content;
+    width: min-content;
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 25px;
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card>h1 {
+    font-size: 32px;
+    color: var(--text)
+}
+
+.card_container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input_bar {
+    padding: 10px;
+    background-color: var(--tertiary);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input_bar>h3 {
+    color: var(--text);
+    font-size: 24px;
+}
+
+.input_bar>input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-family: var(--main-font);
+    border-radius: 5px;
+    min-width: 400px;
+    font-size: 16px;
+    background-color: var(--background);
+}
+
+button.submit {
+    width: 100%;
+    height: min-content;
+    font-family: var(--main-font);
+    font-size: 32px;
+    background-color: var(--tertiary);
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    transition: 250ms;
+}
+
+button.submit:hover {
+    transform: scale(1.05);
+}
+
+.option_seperator {
+    width: 100%;
+    height: min-content;
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    gap: 5px;
+}
+
+.option_seperator>h4 {
+    color: var(--tertiary);
+    font-size: 16px;
+}
+
+.option_seperator>div {
+    background-color: var(--tertiary);
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    align-self: center;
+}
+
+.oauth_option {
+    height: 48px;
+    width: 48px;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: 125ms;
+    border: none;
+}
+
+.oauth_option:hover {
+    transform: scale(1.05)
+}
+
+.oauth_option>img {
+    height: 100%;
+    width: 100%;
+}
+
+.alternate_option {
+    width: 100%;
+    height: min-content;
+    display: flex;
+    align-items: flex-start;
+    color: var(--text);
+    transition: 250ms;
+}
+
+.alternate_option>* {
+    color: var(--text);
+    font-family: var(--main-font);
+    border: none;
+    background-color: transparent;
+    height: min-content;
+    width: max-content;
+}
+
+.alternate_option>*:hover {
+    color: var(--background);
+}
