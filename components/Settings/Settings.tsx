@@ -4,24 +4,26 @@ import Icon from "@/components/Icon";
 export default function Settings() {
     return (
         <div className={style.settings_container}>
-            <div className={style.settings_profile_info}>
-                <div className={style.profile_info_account_photo}>
-                    <Icon iconName="person" />
+            <div className={style.profile_info_edit_account}>
+                <div className={style.social_profile}>
+                    <div className={style.left}>
+                        <div className={style.profile_icon}>
+                            <Icon iconName="person" />
+                        </div>
+                        Name
+                    </div>
+                    <div className={style.right}>
+                        <button className={`${style.change_button} concert_one_regular`}>
+                            Change
+                        </button>
+                    </div>
                 </div>
-                Name
-                <button className={`${style.profile_info_change_name} concert_one_regular`}>
-					Change
-				</button>
-            </div>
-            <div className={style.email}>
-                Email address:
-                <p>maclex3983@gmail.com</p>
-                <button className={`${style.email_change_email} concert_one_regular`}>
-					Change
-				</button>
-            </div>
-            <div className={style.other}>
-                
+                <div className={style.email}>
+                    maclex3983@gmail.com
+                    <button className={`${style.change_button} concert_one_regular`}>
+                        Change
+                    </button>
+                </div>
             </div>
         </div>
     )
