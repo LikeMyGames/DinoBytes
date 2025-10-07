@@ -7,20 +7,41 @@
     gap: 25px;
 }
 
-.settings_profile_info {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
+.profile_info_edit_account {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
     display: flex;
     background-color: var(--tertiary);
     border-radius: 25px;
     padding: 10px;
+    align-items: left;
     font-size: 40px;
-    align-items: center;
-    justify-content: center;
-    justify-content: space-evenly;
+    flex-direction: column;
 }
 
-.profile_info_account_photo {
+.change_button {
+    width: 150px;
+    height: 40px;
+    display: flex;
+    background-color: var(--foreground);
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    border-radius: 25px;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+}
+
+.social_profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile_icon {
     height: 150px;
     width: 150px;
     background-color: grey;
@@ -31,41 +52,15 @@
     border-radius: 75px;
 }
 
-.profile_info_account_photo>span {
+.profile_icon>span {
     font-size: 75px;
 }
 
-.profile_info_change_name {
-     width: 25%;
-    height: 40px;
+.email {
     display: flex;
-    background-color: var(--foreground);
+    background-color: var(--tertiary);
+    border-radius: 25px;
+    padding: 10px;
+    font-size: 40px;
     align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    border-radius: 25px;
-}
-
-.other {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-    display: flex;
-    background-color: var(--tertiary);
-    border-radius: 25px;
-    flex-direction: column;
-    padding: 20px;
-    font-size: 30px;
-    left: 0;
-}
-
-.other1 {
-    grid-column: 1 / 3;
-    grid-row: 2 / 3;
-    display: flex;
-    background-color: var(--tertiary);
-    border-radius: 25px;
-    flex-direction: column;
-    padding: 20px;
-    font-size: 30px;
-    left: 0;
 }
