@@ -19,7 +19,24 @@ export default function Settings() {
                     </div>
                 </div>
                 <div className={style.email}>
+                    email: 
                     maclex3983@gmail.com
+                    <button className={`${style.change_button} concert_one_regular`}>
+                        Change
+                    </button>
+                </div>
+                <div className={style.password}>
+                    <div className={style.left}>
+                        Password: 
+                        {"\u2022"}{"\u2022"}{"\u2022"}{"\u2022"}{"\u2022"}{"\u2022"}{"\u2022"}{"\u2022"}{"\u2022"}{"\u2022"}
+                    </div>
+                    <button className={`${style.change_button} concert_one_regular`}>
+                        Change
+                    </button>
+                </div>
+                <div className={style.theme}>
+                    Theme: 
+                    Dark
                     <button className={`${style.change_button} concert_one_regular`}>
                         Change
                     </button>

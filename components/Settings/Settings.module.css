@@ -17,6 +17,7 @@
     align-items: left;
     font-size: 40px;
     flex-direction: column;
+    gap: 10px;
 }
 
 .change_button {
@@ -42,8 +43,8 @@
 }
 
 .profile_icon {
-    height: 150px;
-    width: 150px;
+    height: 125px;
+    width: 125px;
     background-color: grey;
     color: darkslategray;
     display: flex;
@@ -58,9 +59,23 @@
 
 .email {
     display: flex;
-    background-color: var(--tertiary);
-    border-radius: 25px;
     padding: 10px;
-    font-size: 40px;
+    font-size: 35px;
     align-items: center;
+    justify-content: space-between;
+}
+.password {
+    display: flex;
+    padding: 10px;
+    font-size: 35px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.theme {
+    display: flex;
+    padding: 10px;
+    font-size: 35px;
+    align-items: center;
+    justify-content: space-between;
 }
