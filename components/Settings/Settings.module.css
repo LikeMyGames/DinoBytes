@@ -96,6 +96,7 @@ button.logout {
     background-color: var(--foreground);
     border: none;
     padding: 10px;
+    padding-inline: 20px;
     font-size: 35px;
     margin-top: 75px;
     display: grid;
@@ -104,4 +105,9 @@ button.logout {
     align-items: center;
     width: min-content;
     height: min-content;
+    transition: 125ms;
+}
+
+button.logout:hover {
+    transform: scale(1.05);
 }
