@@ -2,19 +2,15 @@
 'use server'
 
 import { cookies } from "next/headers"
-import { inspect } from "node:util"
-
-const baseURL = 'https://api.kroger.com/v2/products'
 
 type KrogerItem = {
-	productID: string,
-	productName: string,
-	productsPageURI: string,
+	productName?: string,
+	productPageURI?: string,
 	brand?: string,
-	price: KrogerPrice
+	price?: KrogerPrice
 	image?: string,
 	stock?: "HIGH" | "LOW" | "TEMPORARILY_OUT_OF_STOCK",
-	upc: string
+	upc?: string
 }
 
 type KrogerPrice = {
@@ -24,76 +20,74 @@ type KrogerPrice = {
 	promoPerUnitEstimate: number,
 }
 
-let TOKEN = ""
-
-export async function GetToken() {
-	return TOKEN
-}
-
 export async function KrogerAuth(): Promise<string> {
-	console.log(process.env.KROGER_CLIENT_ID)
-	console.log(process.env.KROGER_CLIENT_SECRET)
-	console.log(`${process.env.KROGER_CLIENT_ID}:${process.env.KROGER_CLIENT_SECRET}`)
-	console.log(`Basic ${Buffer.from(`${process.env.KROGER_CLIENT_ID}:${process.env.KROGER_CLIENT_SECRET}`).toString("base64")}`)
-	console.log(`Basic ${btoa(`${process.env.KROGER_CLIENT_ID}:${process.env.KROGER_CLIENT_SECRET}`)}`)
-	console.log(new URLSearchParams({
-		grant_type: "client_credentials",
-		scope: "product.compact"
-	}).toString())
-	const res = await fetch(`https://api.kroger.com/v1/connect/oauth2/token`, {
+	const res = await fetch(`https://api-ce.kroger.com/v1/connect/oauth2/token`, {
 		method: 'POST',
 		headers: {
 			"Content-Type": "application/x-www-form-urlencoded",
 			"Authorization": `Basic ${Buffer.from(`${process.env.KROGER_CLIENT_ID}:${process.env.KROGER_CLIENT_SECRET}`).toString("base64")}`
 		},
-		body: "grant_type=client_credentials&scope=product.compact"
+		body: new URLSearchParams({
+			grant_type: "client_credentials",
+			scope: "product.compact"
+		}).toString()
 	})
-	res.headers.forEach((v, i) => {
-		console.log(i, ": ", v)
-	})
-	let data = null
 	if (res) {
-		data = await res.json()
-		console.log(data)
+		const data = await res.json()
 		if (data && data.access_token) {
-			TOKEN = data.access_token
 			const cookieStore = await cookies()
-			cookieStore.set("accToken", TOKEN)
+			cookieStore.set("KrogerAccessToken", data.access_token)
+			return data.access_token;
 		}
 	}
-	return TOKEN
+	return "";
 }
 
 export async function SearchKrogerAPI(query: string): Promise<KrogerItem[]> {
+	const accToken = await KrogerAuth()
 	const products: KrogerItem[] = []
-	fetch(`${baseURL}?filter.term=${query}`, {
+	const res = await fetch(`https://api-ce.kroger.com/v1/products?filter.term=${query}&filter.location=01400376`, {
 		method: 'GET',
 		headers: {
 			"Accept": "application/json",
-			"Authorization": `Bearer ${TOKEN}`
+			"Authorization": `Bearer ${accToken}`
 		}
 	})
-		.then(req => {
-			if (!req.ok) {
-				return
-			}
-			req.json()
-		})
-		.then((data: any) => {
-			data.data.forEach((val: KrogerItem) => {
-				products[products.length] = {
-					productID: val.productID as string,
-					productName: val.productName as string,
-					productsPageURI: val.productsPageURI as string,
-					brand: val.brand as string,
-					price: val.price as KrogerPrice,
-					image: val.image as string,
-					stock: val.stock as string,
-					upc: val.upc as string,
-					//add other values for products
-				} as KrogerItem
-			})
-		})
+	const data = await res.json()
+
+	data.data.forEach((val: unknown) => {
+		console.log(val)
+		let price = {} as KrogerPrice
+		if ((val as { items: { price: { regular: number } }[] }).items[0].price) {
+			price = {
+				regular: (val as { items: { price: { regular: number } }[] }).items[0].price.regular,
+				promo: (val as { items: { price: { promo: number } }[] }).items[0].price.promo,
+				regularPerUnitEstimate: (val as { items: { price: { regularPerUnitEstimate: number } }[] }).items[0].price.regularPerUnitEstimate,
+				promoPerUnitEstimate: (val as { items: { price: { promoPerUnitEstimate: number } }[] }).items[0].price.promoPerUnitEstimate
+			} as KrogerPrice
+		}
+		let stock = ""
+		if ((val as { items: { inventory: { stockLevel: string } }[] }).items[0].inventory) {
+			stock = (val as { items: { inventory: { stockLevel: string } }[] }).items[0].inventory.stockLevel
+		}
+
+		const item = {
+			productName: (val as { description: string }).description,
+			productPageURI: (val as { productPageURI: string }).productPageURI,
+			brand: (val as { brand: string }).brand,
+			price: price,
+			image: (val as { images: { id: string, perspective: string, default: boolean, sizes: { id: string, size: string, url: string }[] }[] }).images.forEach((img) => {
+				if (img.default) {
+					return img.sizes[0].url
+				}
+			}),
+			stock: stock,
+			upc: (val as { upc: string }).upc,
+		} as KrogerItem
+		products[products.length] = item
+	})
+
+	console.log(products)
 
 	return products
 }

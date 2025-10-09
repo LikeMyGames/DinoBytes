@@ -5,9 +5,8 @@ import style from "./MealPlanner.module.css"
 import { Item, ListsContext } from "@/app/page"
 import { PieChart, Pie, Cell } from "recharts"
 import Icon from "@/components/Icon"
-import { createContext, useContext, useEffect, useState } from "react"
-import { KrogerAuth } from "@/lib/kroger"
-import { queryFood } from "@/lib/food"
+import { createContext, useContext, useState } from "react"
+import { KrogerAuth, SearchKrogerAPI } from "@/lib/kroger"
 
 const AddingItemContext = createContext<[boolean, (value: boolean) => void]>([false, () => { }])
 
@@ -183,7 +182,7 @@ export function ItemSelect() {
 				return
 			}
 			console.log("querying kroger api")
-			queryFood(searchQuery);
+			SearchKrogerAPI(searchQuery);
 		}, 1000)
 	}
 

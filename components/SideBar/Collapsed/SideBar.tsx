@@ -18,7 +18,7 @@ export default function SideBarExpanded() {
 				</button>
 			</div>
 			<div className={styles.side_bar_redirect_list}>
-				<Redirect iconName="dataset" label="Breakdwon" />
+				<Redirect iconName="dataset" label="Breakdown" />
 				<Redirect iconName="lunch_dining" label="Meal Planner" />
 				<Redirect iconName="attach_money" label="Budget Planner" />
 				<Redirect iconName="bookmark_flag" label="Goal Planner" />
