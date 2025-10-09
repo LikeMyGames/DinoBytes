@@ -17,6 +17,7 @@
     align-items: left;
     font-size: 40px;
     flex-direction: column;
+    gap: 10px;
 }
 
 .change_button {
@@ -42,8 +43,8 @@
 }
 
 .profile_icon {
-    height: 150px;
-    width: 150px;
+    height: 125px;
+    width: 125px;
     background-color: grey;
     color: darkslategray;
     display: flex;
@@ -58,9 +59,55 @@
 
 .email {
     display: flex;
-    background-color: var(--tertiary);
-    border-radius: 25px;
     padding: 10px;
-    font-size: 40px;
+    font-size: 35px;
     align-items: center;
+    justify-content: space-between;
+}
+
+.password {
+    display: flex;
+    padding: 10px;
+    font-size: 35px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.theme {
+    display: flex;
+    padding: 10px;
+    font-size: 35px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logout_containter {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    padding: 10px;
+    border-radius: 50px;
+    justify-self: flex-end;
+}
+
+button.logout {
+    justify-self: center;
+    border-radius: 50px;
+    background-color: var(--foreground);
+    border: none;
+    padding: 10px;
+    padding-inline: 20px;
+    font-size: 35px;
+    margin-top: 75px;
+    display: grid;
+    /* justify-content: center; */
+    grid-template-columns: max-content 1fr max-content;
+    align-items: center;
+    width: min-content;
+    height: min-content;
+    transition: 125ms;
+}
+
+button.logout:hover {
+    transform: scale(1.05);
 }
