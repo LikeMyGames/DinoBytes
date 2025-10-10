@@ -122,8 +122,19 @@ export function GoalPlanner() {
 				</button>
 			</div>
 			<div className={style.goal_all}>
-
-
+				<h1>Goals</h1>
+				<div className={style.goal_weight}>
+					<p>Goal weight: 120lb</p>
+					<button className={`${style.budget_planner_change_store} concert_one_regular`}>
+						Change
+					</button>
+				</div>
+				<div className={style.goal_calories}>
+					<p>Calories: 200cal</p>
+					<button className={`${style.budget_planner_change_store} concert_one_regular`}>
+						Change
+					</button>
+				</div>
 			</div>
 			<div className={style.goal_success}>
 				<h3>Completions</h3>

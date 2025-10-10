@@ -12,6 +12,9 @@ export default function Settings() {
                     <div className={style.left}>
                         <div className={style.profile_icon}>
                             <Icon iconName="person" />
+                            <button className={`${style.change_icon} concert_one_regular`}>
+                                <Icon iconName="edit" />
+                            </button>
                         </div>
                         Name
                     </div>

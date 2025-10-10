@@ -66,6 +66,24 @@
     flex-direction: column;
     background-color: var(--tertiary);
     border-radius: 25px;
+    padding: 10px;
+    font-size: 30px;
+}
+
+.goal_all>h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.change_button {
+    width: 25%;
+    height: 40px;
+    display: flex;
+    background-color: var(--foreground);
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    border-radius: 25px;
 }
 
 .goal_success {
