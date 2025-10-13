@@ -18,11 +18,9 @@ export default function Settings() {
                         </div>
                         Name
                     </div>
-                    <div className={style.right}>
-                        <button className={`${style.change_button} concert_one_regular`}>
-                            Change
-                        </button>
-                    </div>
+                    <button className={`${style.change_button} concert_one_regular`}>
+                        Change
+                    </button>
                 </div>
                 <div className={style.email}>
                     email:
