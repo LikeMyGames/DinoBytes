@@ -12,14 +12,15 @@ export default function Settings() {
                     <div className={style.left}>
                         <div className={style.profile_icon}>
                             <Icon iconName="person" />
+                            <button className={`${style.change_icon} concert_one_regular`}>
+                                <Icon iconName="edit" />
+                            </button>
                         </div>
                         Name
                     </div>
-                    <div className={style.right}>
-                        <button className={`${style.change_button} concert_one_regular`}>
-                            Change
-                        </button>
-                    </div>
+                    <button className={`${style.change_button} concert_one_regular`}>
+                        Change
+                    </button>
                 </div>
                 <div className={style.email}>
                     email:

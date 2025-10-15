@@ -34,6 +34,7 @@
 .left {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 .social_profile {
@@ -47,14 +48,31 @@
     width: 125px;
     background-color: grey;
     color: darkslategray;
+    border-radius: 75px;
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 75px;
+    position: relative;
 }
 
 .profile_icon>span {
     font-size: 75px;
+}
+
+.change_icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    height: 30px;
+    width: 30px;
+    background-color: darkslategrey;
+    color: gray;
+    border-radius: 15px;
+}
+
+.change_icon>span {
+    font-size: 20px;
 }
 
 .email {
