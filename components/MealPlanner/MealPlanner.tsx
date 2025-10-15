@@ -2,11 +2,12 @@
 'use client'
 import style from "./MealPlanner.module.css"
 // import { useState } from "react"
-import { Item, ListsContext } from "@/app/page"
+import { ListsContext } from "@/app/page"
 import { PieChart, Pie, Cell } from "recharts"
 import Icon from "@/components/Icon"
-import { createContext, useContext, useState } from "react"
-import { KrogerAuth, SearchKrogerAPI } from "@/lib/kroger"
+import { createContext, useContext, useEffect, useState } from "react"
+import { KrogerAuth, SearchKrogerAPI, KrogerItem } from "@/lib/kroger"
+import Image from "next/image"
 
 const AddingItemContext = createContext<[boolean, (value: boolean) => void]>([false, () => { }])
 
@@ -173,18 +174,26 @@ export function ItemSelect() {
 	const [usePlanned, setUsePlanned] = useState<boolean>(false);
 	const [addingItem, setAddingItem] = useContext(AddingItemContext);
 	let searchQuery = ""
-	const [items, setItems] = useState<Item[]>([])
+	const [searchState, setSearchState] = useState<string>("")
+	const [items, setItems] = useState<KrogerItem[]>([])
 
-	async function checkQuery() {
+	function checkQuery() {
 		const oldQuery = searchQuery
 		setTimeout(() => {
 			if (oldQuery != searchQuery || oldQuery == "") {
 				return
 			}
 			console.log("querying kroger api")
-			SearchKrogerAPI(searchQuery);
+			setSearchState(searchQuery)
 		}, 1000)
 	}
+
+	useEffect(() => {
+		SearchKrogerAPI(searchState)
+			.then(data => {
+				setItems(data)
+			})
+	}, [searchState])
 
 	if (addingItem) {
 		return (
@@ -238,10 +247,12 @@ export function MealBuilder() {
 
 }
 
-function ItemWidget({ item }: { item: Item }) {
+export function ItemWidget({ item }: { item: KrogerItem }) {
+	console.log(item)
 	return (
-		<div>
-			{item.name}
+		<div className={style.item_container}>
+			<h1>{item.productName}</h1>
+			<img alt={"item image"} src={item.image ?? ""} />
 		</div>
 	)
 }

@@ -3,7 +3,7 @@
 
 import { cookies } from "next/headers"
 
-type KrogerItem = {
+export type KrogerItem = {
 	productName?: string,
 	productPageURI?: string,
 	brand?: string,
@@ -13,7 +13,7 @@ type KrogerItem = {
 	upc?: string
 }
 
-type KrogerPrice = {
+export type KrogerPrice = {
 	regular: number,
 	promo: number,
 	regularPerUnitEstimate: number,
@@ -54,9 +54,13 @@ export async function SearchKrogerAPI(query: string): Promise<KrogerItem[]> {
 		}
 	})
 	const data = await res.json()
+	console.log(res)
+	console.log(data)
+	if (!data.data) {
+		return products
+	}
 
 	data.data.forEach((val: unknown) => {
-		console.log(val)
 		let price = {} as KrogerPrice
 		if ((val as { items: { price: { regular: number } }[] }).items[0].price) {
 			price = {
@@ -66,21 +70,23 @@ export async function SearchKrogerAPI(query: string): Promise<KrogerItem[]> {
 				promoPerUnitEstimate: (val as { items: { price: { promoPerUnitEstimate: number } }[] }).items[0].price.promoPerUnitEstimate
 			} as KrogerPrice
 		}
-		let stock = ""
+		let stock = "unknown"
 		if ((val as { items: { inventory: { stockLevel: string } }[] }).items[0].inventory) {
 			stock = (val as { items: { inventory: { stockLevel: string } }[] }).items[0].inventory.stockLevel
 		}
+		let image = "";
+		(val as { images: { id: string, perspective: string, featured: boolean, sizes: { id: string, size: string, url: string }[] }[] }).images.forEach((img) => {
+			if (img.featured) {
+				image = img.sizes[0].url
+			}
+		})
 
 		const item = {
 			productName: (val as { description: string }).description,
 			productPageURI: (val as { productPageURI: string }).productPageURI,
 			brand: (val as { brand: string }).brand,
 			price: price,
-			image: (val as { images: { id: string, perspective: string, default: boolean, sizes: { id: string, size: string, url: string }[] }[] }).images.forEach((img) => {
-				if (img.default) {
-					return img.sizes[0].url
-				}
-			}),
+			image: image,
 			stock: stock,
 			upc: (val as { upc: string }).upc,
 		} as KrogerItem

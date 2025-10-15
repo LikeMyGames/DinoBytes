@@ -46,6 +46,7 @@ body {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
+	scrollbar-color: var(--foreground) transparent;
 }
 
 a {
@@ -74,4 +75,8 @@ span.material-symbols-rounded {
 	user-select: none;
 	/* Standard syntax */
 	outline: none;
+}
+
+button {
+	border: none;
 }
