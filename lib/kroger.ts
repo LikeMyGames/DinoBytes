@@ -121,6 +121,6 @@ export async function loactionSearch(query: string): Promise<KrogerLocation[]> {
 		} as KrogerLocation
 		location[location.length] = locationData
 	})
-
+	console.log(location)
 	return location
 }
