@@ -13,6 +13,10 @@ export type KrogerItem = {
 	upc?: string
 }
 
+export type KrogerLocation = {
+	locationId?: string
+}
+
 export type KrogerPrice = {
 	regular: number,
 	promo: number,
@@ -96,4 +100,27 @@ export async function SearchKrogerAPI(query: string): Promise<KrogerItem[]> {
 	console.log(products)
 
 	return products
+}
+export async function loactionSearch(query: string): Promise<KrogerLocation[]> {
+	const accToken = await KrogerAuth()
+	const location: KrogerLocation[] = []
+	const res = await fetch(`https://api-ce.kroger.com/v1/locations?filter.latLong.near=${query}`, {
+		method: 'GET',
+		headers: {
+			"Accept": "application/json",
+			"Authorization": `Bearer ${accToken}`
+		}
+	})
+	const data = await res.json()
+	if (!data.data) {
+		return location
+	}
+	data.data.forEach((val: unknown) => {
+		const locationData = {
+			locationId: (val as { locationId: string }).locationId
+		} as KrogerLocation
+		location[location.length] = locationData
+	})
+	console.log(location)
+	return location
 }
