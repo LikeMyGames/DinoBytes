@@ -8,9 +8,10 @@ export async function GetUserData(uid: string): Promise<User | null> {
     const docRef = doc(db, "users", uid);
     const docSnap = await getDoc(docRef)
     if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
+        const data = docSnap.data()
+        console.log("Document data:", data);
         // return docSnap.data() as User;
-        return docSnap.data();
+        return { uid: uid, ...data } as User;
     } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -19,7 +20,7 @@ export async function GetUserData(uid: string): Promise<User | null> {
     return null;
 }
 
-export async function SetUserData(uid: string, data: User) {
+export async function SaveUserData(uid: string, data: User) {
     const docRef = doc(db, "users", uid);
     await setDoc(docRef, data)
 }

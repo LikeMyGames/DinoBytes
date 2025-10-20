@@ -2,6 +2,7 @@ import style from "./Settings.module.css"
 import Icon from "@/components/Icon";
 import { UserContext } from "@/app/page";
 import { useContext } from "react";
+import { SaveUserData } from "@/lib/firebase/database/database"
 
 export default function Settings() {
     const [user, setUser] = useContext(UserContext)
@@ -12,7 +13,7 @@ export default function Settings() {
                     <div className={style.left}>
                         <div className={style.profile_icon}>
                             <Icon iconName="person" />
-                            <button className={`${style.change_icon} concert_one_regular`}>
+                            <button type="button" title="edit button" className={`${style.change_icon} concert_one_regular`}>
                                 <Icon iconName="edit" />
                             </button>
                         </div>
@@ -46,12 +47,12 @@ export default function Settings() {
                     </button>
                 </div>
                 <div className={style.logout_containter}>
-                    <button className={`${style.logout} concert_one_regular`} onClick={() => { setUser(null) }}>
+                    <button className={`${style.logout} concert_one_regular`} onClick={() => { SaveUserData(user?.uid ?? "", user ?? { uid: "" }); setUser(null); }}>
                         Logout
                     </button>
                 </div>
             </div>
 
-        </div>
+        </div >
     )
 }

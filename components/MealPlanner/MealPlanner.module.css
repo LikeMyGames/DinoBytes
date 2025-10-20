@@ -221,6 +221,8 @@
     overflow-y: auto;
     max-height: 67dvh;
     scrollbar-color: var(--foreground) transparent;
+    border-radius: 15px;
+    overflow-x: hidden;
 }
 
 /* .item_select_chooser_container::-webkit-scrollbar {

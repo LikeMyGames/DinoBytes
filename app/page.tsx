@@ -8,11 +8,14 @@ import { BudgetPlanner } from "@/components/BudgetPlanner/BudgetPlanner";
 import { Breakdown } from "@/components/Breakdown/Breakdown";
 import Settings from "@/components/Settings/Settings";
 import { Login } from "@/components/Login/Login"
-// import { initFoodAPI, queryFood } from "@/lib/food";
+import { KrogerItem } from "@/lib/kroger";
+import { Product } from "openfoodfac-ts/dist/OpenFoodFactsApi/types";
+import { SaveUserData } from "@/lib/firebase/database/database";
 
 export type User = {
+	uid: string,
 	name?: string,
-	history?: StringIndexedArray<List>[],
+	history?: Record<string, List>,
 	savedItems?: Item[],
 }
 
@@ -25,20 +28,18 @@ export type List = {
 }
 
 export type Item = {
-	name: string,
-	protein: number,
-	carbs: number,
-	fat: number,
-	calories: number
-}
-
-export interface StringIndexedArray<T> {
-	[index: string]: T
+	name?: string,
+	protein?: number,
+	carbs?: number,
+	fat?: number,
+	calories?: number,
+	foodData?: Product,
+	KrogerItem?: KrogerItem,
 }
 
 export const ScreenContext = createContext<[string, (value: string) => void]>(["Breakdown", () => { }])
 export const ListsContext = createContext<[List, (value: List) => void]>([{}, () => { }])
-export const UserContext = createContext<[User | null, (value: User | null) => void]>([{}, () => { }])
+export const UserContext = createContext<[User | null, (value: User | null) => void]>([{ uid: "" }, () => { }])
 
 export default function Home() {
 	const [screen, setScreen] = useState<string>("Breakdown")
@@ -55,6 +56,20 @@ export default function Home() {
 		logged: true
 	})
 	const [user, setUser] = useState<User | null>(null)
+
+	async function checkUserSync() {
+		const tempUser = user
+		setTimeout(() => {
+			console.log("checking if user data need to be saved")
+			if (tempUser != user) {
+				console.log("saving user data")
+				SaveUserData(user?.uid ?? "", user ?? { uid: "" })
+			}
+			checkUserSync()
+		}, 1000 * 60 * 5)
+	}
+
+	checkUserSync()
 
 	return (
 		<UserContext.Provider value={[user, (val: User | null) => { console.log(val); setUser(val) }]}>

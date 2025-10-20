@@ -1,9 +1,10 @@
 'use server'
 
 import { OpenFoodFactsApi } from 'openfoodfac-ts';
+import { Product } from 'openfoodfac-ts/dist/OpenFoodFactsApi/types';
 const FOOD_API_URL = "https://world.openfoodfacts.net/"
 
-export async function queryFood(barcode: string) {
+export async function queryFood(barcode: string): Promise<Product | null> {
     const openFoodFactsApi = new OpenFoodFactsApi();
     try {
         const product = await openFoodFactsApi.findProductByBarcode(barcode);
@@ -15,9 +16,11 @@ export async function queryFood(barcode: string) {
         } else {
             console.log(`Product with barcode ${barcode} not found.`);
         }
+        return product
     } catch (error) {
         console.error('Error fetching product:', error);
     }
+    return Promise.resolve(null)
 }
 
 export async function initFoodAPI() {
