@@ -20,7 +20,7 @@
     gap: 10px;
 }
 
-.change_button {
+button.change_button {
     width: 150px;
     height: 40px;
     display: flex;
@@ -60,7 +60,7 @@
     font-size: 75px;
 }
 
-.change_icon {
+button.change_icon {
     position: absolute;
     bottom: 5px;
     right: 5px;
@@ -71,7 +71,7 @@
     border-radius: 15px;
 }
 
-.change_icon>span {
+button.change_icon>span {
     font-size: 20px;
 }
 
@@ -123,9 +123,4 @@ button.logout {
     align-items: center;
     width: min-content;
     height: min-content;
-    transition: 125ms;
-}
-
-button.logout:hover {
-    transform: scale(1.05);
 }

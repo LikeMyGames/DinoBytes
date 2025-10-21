@@ -79,4 +79,9 @@ span.material-symbols-rounded {
 
 button {
 	border: none;
+	transition: 125ms;
+}
+
+button:hover {
+	transform: scale(1.05);
 }
