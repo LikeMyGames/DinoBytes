@@ -136,4 +136,87 @@
     left: 0px;
     top: 0px;
     background-color: #00000033;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.goal_day_edit_card {
+    background-color: var(--foreground);
+    width: max-content;
+    height: max-content;
+    border-radius: 25px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.goal_day_edit_topbar {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: max-content max-content 1fr min-content;
+    gap: 10px;
+}
+
+.goal_day_edit_topbar>button {
+    padding: 10px;
+    background-color: var(--tertiary);
+    border: none;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 125ms;
+    font-size: 24px;
+}
+
+.goal_day_edit_topbar>button:hover {
+    transform: scale(1.05);
+}
+
+.goal_day_edit_topbar_close {
+    grid-column: 4 / 5;
+    background-color: var(--tertiary);
+    border: none;
+    color: var(--text);
+}
+
+.goal_day_edit_topbar_close>span {
+    font-size: 28px;
+}
+
+.goal_edit_body {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    height: min-content;
+    background-color: var(--tertiary);
+    padding: 5px;
+    border-radius: 15px;
+    gap: 10px;
+}
+
+.goal_edit_body>div {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+.goal_edit_body>div>input {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+    outline: none;
+    border: none;
+    font-family: var(--font-main);
+    padding: 5px;
+    color: var(--text);
+    background-color: var(--background);
+    border-radius: 10px;
+    font-size: 25px;
 }

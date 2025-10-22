@@ -20,9 +20,11 @@ export async function GetUserData(uid: string): Promise<User | null> {
     return null;
 }
 
-export async function SaveUserData(uid: string, data: User) {
-    const docRef = doc(db, "users", uid);
+export async function SaveUserData(data: User) {
+    console.log("attempting user data save to firebase")
+    const docRef = doc(db, "users", data.uid);
     await setDoc(docRef, data)
+    console.log("successfully saved to firebase")
 }
 
 export async function CreateUserData(uid: string): Promise<User | null> {

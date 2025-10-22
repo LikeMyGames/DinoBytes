@@ -17,7 +17,7 @@ export default function Settings() {
                                 <Icon iconName="edit" />
                             </button>
                         </div>
-                        Name
+                        {user?.name}
                     </div>
                     <button className={`${style.change_button} concert_one_regular`}>
                         Change
@@ -47,7 +47,7 @@ export default function Settings() {
                     </button>
                 </div>
                 <div className={style.logout_containter}>
-                    <button className={`${style.logout} concert_one_regular`} onClick={() => { SaveUserData(user?.uid ?? "", user ?? { uid: "" }); setUser(null); }}>
+                    <button className={`${style.logout} concert_one_regular`} onClick={() => { SaveUserData(user ?? { uid: "" }); setUser(null); }}>
                         Logout
                     </button>
                 </div>

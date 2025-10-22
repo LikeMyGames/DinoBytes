@@ -111,3 +111,111 @@
 .breakdown_goal_week_day_data>*>p {
     font-size: 16px;
 }
+
+.item_select {
+    background-color: #00000033;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item_select_card {
+    background-color: var(--foreground);
+    width: max-content;
+    height: max-content;
+    border-radius: 25px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.item_select_type_select {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: max-content max-content 1fr min-content;
+    gap: 10px;
+}
+
+.item_select_type_select>button {
+    padding: 10px;
+    background-color: var(--tertiary);
+    border: none;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 125ms;
+    font-size: 24px;
+}
+
+.item_select_type_select>button:hover {
+    transform: scale(1.05);
+}
+
+.item_select_type_select_close {
+    grid-column: 4 / 5;
+    background-color: transparent;
+    border: none;
+    color: var(--text);
+}
+
+.item_select_type_select_close>span {
+    font-size: 28px;
+}
+
+.item_select_chooser {
+    background-color: var(--tertiary);
+    height: min-content;
+    max-height: 50dvh;
+    /* min-height: 100px;
+    height: min-content;
+    max-height: 67dvh; */
+    border-radius: 15px;
+    width: 100%;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content lamp(100px, min-content, 67dvh);
+    overflow: hidden;
+    overflow-y: auto;
+    gap: 5px;
+}
+
+.loc_change_item_container {
+    padding: 5px;
+    background-color: var(--foreground);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.loc_change_item_container>div {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    height: min-content;
+}
+
+.loc_change_item_container>button {
+    height: min-content;
+    width: min-content;
+    padding: 10px;
+    font-size: 25px;
+    border-radius: 15px;
+    background-color: var(--tertiary);
+    color: var(--text);
+    transition: 125ms;
+}
+
+.loc_change_item_container>button:hover {
+    transform: scale(1.05);
+}

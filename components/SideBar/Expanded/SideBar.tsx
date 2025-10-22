@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styles from "./SideBar.module.css"
-import { ScreenContext } from "@/app/page";
+import { ScreenContext, UserContext } from "@/app/page";
 import Image from "next/image"
 import DinoBytes_icon from "@/public/DinoBytes_icon_light 512x512.png"
 import Redirect from "./Redirect";
@@ -10,6 +10,8 @@ import { CollaspedContext } from "../SideBar";
 export default function SideBarExpanded() {
     const [, setScreen] = useContext(ScreenContext)
     const [, setCollapsed] = useContext(CollaspedContext)
+    const [user,] = useContext(UserContext)
+
     return (
         <div className={styles.side_bar}>
             <div className={styles.side_bar_title}>
@@ -29,7 +31,7 @@ export default function SideBarExpanded() {
                     <Icon iconName="person" />
                 </div>
                 <div className={styles.side_bar_account_info}>
-                    Name
+                    {user?.name}
                 </div>
                 <button type="button" title="Settings" className={styles.side_bar_account_edit} onClick={() => setScreen("Settings")}>
                     <Icon iconName="settings" />

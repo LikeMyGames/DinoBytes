@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use server'
 
 import { cookies } from "next/headers"
@@ -14,7 +13,16 @@ export type KrogerItem = {
 }
 
 export type KrogerLocation = {
+	address: Address,
+	chain: string,
+	phone: string,
+	departments: KrogerLocationDepartment[],
+	geolocation: Geolocation
+	hours: KrogerLocationHours
 	locationId?: string
+	storeNumber: string,
+	divisionNumber: string,
+	name: string
 }
 
 export type KrogerPrice = {
@@ -22,6 +30,47 @@ export type KrogerPrice = {
 	promo: number,
 	regularPerUnitEstimate: number,
 	promoPerUnitEstimate: number,
+}
+
+type Address = {
+	addressLine1: string,
+	addressLine2: string,
+	city: string,
+	county: string,
+	state: string,
+	zipCode: string
+}
+
+type KrogerLocationDepartment = {
+	departmentId: string,
+	name: string,
+	phone: string,
+	hours: KrogerLocationHours
+}
+
+type KrogerLocationHours = {
+	Open24: boolean,
+	gmtOffset?: string,
+	timezone?: string
+	monday: KrogerLocationDepartmentHoursDay,
+	tuesday: KrogerLocationDepartmentHoursDay,
+	wednesday: KrogerLocationDepartmentHoursDay,
+	thursday: KrogerLocationDepartmentHoursDay,
+	friday: KrogerLocationDepartmentHoursDay,
+	saturday: KrogerLocationDepartmentHoursDay,
+	sunday: KrogerLocationDepartmentHoursDay
+}
+
+type KrogerLocationDepartmentHoursDay = {
+	open: number,
+	close: number,
+	open24: boolean
+}
+
+type Geolocation = {
+	latLng: string,
+	latitude: number,
+	longitude: number
 }
 
 export async function KrogerAuth(): Promise<string> {
@@ -47,10 +96,10 @@ export async function KrogerAuth(): Promise<string> {
 	return "";
 }
 
-export async function SearchKrogerAPI(query: string): Promise<KrogerItem[]> {
+export async function SearchKrogerAPI(query: string, locationId: string): Promise<KrogerItem[]> {
 	const accToken = await KrogerAuth()
 	const products: KrogerItem[] = []
-	const res = await fetch(`https://api-ce.kroger.com/v1/products?filter.term=${query}&filter.location=01400376`, {
+	const res = await fetch(`https://api-ce.kroger.com/v1/products?filter.term=${query}&filter.location=${locationId}`, {
 		method: 'GET',
 		headers: {
 			"Accept": "application/json",
@@ -81,7 +130,11 @@ export async function SearchKrogerAPI(query: string): Promise<KrogerItem[]> {
 		let image = "";
 		(val as { images: { id: string, perspective: string, featured: boolean, sizes: { id: string, size: string, url: string }[] }[] }).images.forEach((img) => {
 			if (img.featured) {
-				image = img.sizes[0].url
+				if (img.sizes[0] == undefined) {
+					image = (img as unknown as { sizes: { url: string } }).sizes.url
+				} else {
+					image = img.sizes[0].url
+				}
 			}
 		})
 
@@ -101,26 +154,24 @@ export async function SearchKrogerAPI(query: string): Promise<KrogerItem[]> {
 
 	return products
 }
-export async function loactionSearch(query: string): Promise<KrogerLocation[]> {
+export async function KrogerLocationSearch(lat: number, long: number): Promise<KrogerLocation[] | null> {
 	const accToken = await KrogerAuth()
 	const location: KrogerLocation[] = []
-	const res = await fetch(`https://api-ce.kroger.com/v1/locations?filter.latLong.near=${query}`, {
+	const res = await fetch(`https://api-ce.kroger.com/v1/locations?filter.latLong.near=${lat},${long}&filter.radiusInMiles=5`, {
 		method: 'GET',
 		headers: {
 			"Accept": "application/json",
 			"Authorization": `Bearer ${accToken}`
 		}
 	})
+	console.log(res)
 	const data = await res.json()
 	if (!data.data) {
-		return location
+		return Promise.resolve(null)
 	}
-	data.data.forEach((val: unknown) => {
-		const locationData = {
-			locationId: (val as { locationId: string }).locationId
-		} as KrogerLocation
-		location[location.length] = locationData
+	console.log(data)
+	data.data.forEach((val: KrogerLocation) => {
+		location[location.length] = val
 	})
-	console.log(location)
 	return location
 }
