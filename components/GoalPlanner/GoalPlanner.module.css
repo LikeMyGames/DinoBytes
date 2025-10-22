@@ -154,6 +154,40 @@
     gap: 10px;
 }
 
+.goal_day_edit_card>button {
+    padding: 10px;
+    background-color: var(--tertiary);
+    border: none;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 125ms;
+    font-size: 24px;
+}
+
+.goal_day_edit_card>button:hover {
+    transform: scale(1.05);
+}
+
+.goal_day_edit_close {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: max-content max-content 1fr min-content;
+    gap: 10px;
+}
+
+.goal_day_edit_close {
+    grid-column: 4 / 5;
+    background-color: var(--tertiary);
+    border: none;
+    color: var(--text);
+}
+
+.goal_day_edit_close>span {
+    font-size: 28px;
+}
+
 .goal_day_edit_topbar {
     display: grid;
     grid-template-rows: 1fr;
