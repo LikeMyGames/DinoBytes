@@ -10,6 +10,7 @@ const ChangingLocContext = createContext<[boolean, (value: boolean) => void]>([f
 
 export function Breakdown() {
 	const [changingLoc, setChangingLoc] = useState(false)
+	const [user, setUser] = useContext(UserContext)
 
 	return (
 		<ChangingLocContext.Provider value={[changingLoc, setChangingLoc]}>
@@ -25,7 +26,7 @@ export function Breakdown() {
 					<p>This week{"\'"}s budget:</p>
 					<p>$ 1000</p>
 					<div className={style.budget_planner_store}>
-						<p>Store: Ralphs 1982</p>
+						<p>Store: {user?.prefferedLocation?.locationId}</p>
 						<button className={`${style.budget_planner_change_store} concert_one_regular`} onClick={() => setChangingLoc(true)}>
 							Change
 						</button>
