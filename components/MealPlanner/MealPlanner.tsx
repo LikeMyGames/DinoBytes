@@ -4,7 +4,11 @@
 'use client'
 import style from "./MealPlanner.module.css"
 // import { useState } from "react"
+<<<<<<< HEAD
 import { Item, List, User } from "@/app/page"
+=======
+import { Item, List, User, UserContext } from "@/app/page"
+>>>>>>> d56753b (started and got user object saving to a decent point)
 import { PieChart, Pie, Cell } from "recharts"
 import Icon from "@/components/Icon"
 import { createContext, useContext, useEffect, useRef, useState } from "react"

@@ -154,6 +154,7 @@
     gap: 10px;
 }
 
+<<<<<<< HEAD
 .goal_day_edit_card>button {
     padding: 10px;
     background-color: var(--tertiary);
@@ -188,6 +189,8 @@
     font-size: 28px;
 }
 
+=======
+>>>>>>> d56753b (started and got user object saving to a decent point)
 .goal_day_edit_topbar {
     display: grid;
     grid-template-rows: 1fr;

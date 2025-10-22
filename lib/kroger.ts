@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 'use client'
+=======
+'use server'
+
+import { cookies } from "next/headers"
+>>>>>>> d56753b (started and got user object saving to a decent point)
 
 export type KrogerItem = {
 	productName?: string,
@@ -103,6 +109,7 @@ export async function KrogerAuth(): Promise<string> {
 }
 
 export async function SearchKrogerAPI(query: string, locationId: string): Promise<KrogerItem[]> {
+<<<<<<< HEAD
 	// const accToken = TOKEN ? TOKEN : ''
 	const products: KrogerItem[] = []
 	// const res = await fetch(`https://api-ce.kroger.com/v1/products?filter.term=${query}&filter.location=${locationId}`, {
@@ -116,6 +123,16 @@ export async function SearchKrogerAPI(query: string, locationId: string): Promis
 	const res = await fetch(`${window.location.origin}/kroger`, {
 		method: 'POST',
 		body: JSON.stringify({ action: "search", query: query, locationId: locationId })
+=======
+	const accToken = await KrogerAuth()
+	const products: KrogerItem[] = []
+	const res = await fetch(`https://api-ce.kroger.com/v1/products?filter.term=${query}&filter.location=${locationId}`, {
+		method: 'GET',
+		headers: {
+			"Accept": "application/json",
+			"Authorization": `Bearer ${accToken}`
+		}
+>>>>>>> d56753b (started and got user object saving to a decent point)
 	})
 	console.log(res)
 
@@ -164,6 +181,7 @@ export async function SearchKrogerAPI(query: string, locationId: string): Promis
 	return products
 }
 export async function KrogerLocationSearch(lat: number, long: number): Promise<KrogerLocation[] | null> {
+<<<<<<< HEAD
 	// const accToken = TOKEN ? TOKEN : ''
 	const location: KrogerLocation[] = []
 	// const res = await fetch(`https://api-ce.kroger.com/v1/locations?filter.latLong.near=${lat},${long}&filter.radiusInMiles=5`, {
@@ -181,10 +199,26 @@ export async function KrogerLocationSearch(lat: number, long: number): Promise<K
 
 	console.log(res)
 
+=======
+	const accToken = await KrogerAuth()
+	const location: KrogerLocation[] = []
+	const res = await fetch(`https://api-ce.kroger.com/v1/locations?filter.latLong.near=${lat},${long}&filter.radiusInMiles=5`, {
+		method: 'GET',
+		headers: {
+			"Accept": "application/json",
+			"Authorization": `Bearer ${accToken}`
+		}
+	})
+	console.log(res)
+>>>>>>> d56753b (started and got user object saving to a decent point)
 	const data = await res.json()
 	if (!data.data) {
 		return Promise.resolve(null)
 	}
+<<<<<<< HEAD
+=======
+	console.log(data)
+>>>>>>> d56753b (started and got user object saving to a decent point)
 	data.data.forEach((val: KrogerLocation) => {
 		location[location.length] = val
 	})

@@ -3,14 +3,22 @@ import { KrogerLocation, KrogerLocationSearch } from "@/lib/kroger";
 import Icon from "../Icon";
 import style from "./Breakdown.module.css"
 import { createContext, useContext, useEffect, useState } from "react";
+<<<<<<< HEAD
 import { UserContext } from "@/app/contexts";
 // import { onAuthStateChanged } from "firebase/auth";
+=======
+import { UserContext } from "@/app/page";
+import { onAuthStateChanged } from "firebase/auth";
+>>>>>>> d56753b (started and got user object saving to a decent point)
 
 const ChangingLocContext = createContext<[boolean, (value: boolean) => void]>([false, () => { }])
 
 export function Breakdown() {
 	const [changingLoc, setChangingLoc] = useState(false)
+<<<<<<< HEAD
 	const [user,] = useContext(UserContext)
+=======
+>>>>>>> d56753b (started and got user object saving to a decent point)
 
 	return (
 		<ChangingLocContext.Provider value={[changingLoc, setChangingLoc]}>
@@ -26,7 +34,11 @@ export function Breakdown() {
 					<p>This week{"\'"}s budget:</p>
 					<p>$ 1000</p>
 					<div className={style.budget_planner_store}>
+<<<<<<< HEAD
 						<p>Store: {user?.prefferedLocation?.locationId}</p>
+=======
+						<p>Store: Ralphs 1982</p>
+>>>>>>> d56753b (started and got user object saving to a decent point)
 						<button className={`${style.budget_planner_change_store} concert_one_regular`} onClick={() => setChangingLoc(true)}>
 							Change
 						</button>

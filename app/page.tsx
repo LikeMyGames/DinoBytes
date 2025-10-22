@@ -1,6 +1,10 @@
 'use client'
 import styles from "./page.module.css";
+<<<<<<< HEAD
 import { useState, useRef } from "react";
+=======
+import { useState, createContext, useRef } from "react";
+>>>>>>> d56753b (started and got user object saving to a decent point)
 import MealPlanner from "@/components/MealPlanner/MealPlanner";
 import SideBar from "@/components/SideBar/SideBar";
 import { GoalPlanner } from "@/components/GoalPlanner/GoalPlanner";
@@ -11,7 +15,10 @@ import { Login } from "@/components/Login/Login"
 import { KrogerItem, KrogerLocation } from "@/lib/kroger";
 import { SaveUserData } from "@/lib/firebase/database/database";
 import { FoodData } from "@/lib/food";
+<<<<<<< HEAD
 import { ScreenContext, UserContext } from "./contexts";
+=======
+>>>>>>> d56753b (started and got user object saving to a decent point)
 
 export type User = {
 	uid: string,

@@ -1,6 +1,10 @@
 import { useContext } from "react";
 import styles from "./SideBar.module.css"
+<<<<<<< HEAD
 import { ScreenContext, UserContext } from "@/app/contexts";
+=======
+import { ScreenContext, UserContext } from "@/app/page";
+>>>>>>> d56753b (started and got user object saving to a decent point)
 import Image from "next/image"
 import DinoBytes_icon from "@/public/DinoBytes_icon_light 512x512.png"
 import Redirect from "./Redirect";

@@ -2,8 +2,14 @@ import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recha
 import style from "./GoalPlanner.module.css"
 import Icon from "@/components/Icon"
 import { createContext, useContext, useState } from "react"
+<<<<<<< HEAD
 import { List, User, UserGoals } from "@/app/page"
 import { UserContext } from "@/app/contexts"
+=======
+import { User, UserContext, UserGoals } from "@/app/page"
+
+const GoalEditOpenContext = createContext<[boolean, (val: boolean) => void]>([false, () => { }])
+>>>>>>> d56753b (started and got user object saving to a decent point)
 
 const GoalEditOpenContext = createContext<[boolean, (val: boolean) => void]>([false, () => { }])
 const GoalDayEditOpenContext = createContext<[boolean, (val: boolean) => void]>([false, () => { }])
@@ -28,6 +34,7 @@ export function GoalPlanner() {
 	const [user,] = useContext(UserContext)
 
 	return (
+<<<<<<< HEAD
 		<GoalDayEditOpenContext.Provider value={[goalDayEdit, setGoalDayEditting]}>
 			<GoalEditOpenContext.Provider value={[goalEditOpen, setGoalEditOpen]}>
 				<div className={style.goal_container}>
@@ -165,6 +172,143 @@ export function GoalPlanner() {
 				</div>
 			</GoalEditOpenContext.Provider>
 		</GoalDayEditOpenContext.Provider>
+=======
+		<GoalEditOpenContext.Provider value={[goalEditOpen, setGoalEditOpen]}>
+			<div className={style.goal_container}>
+				<div className={style.goal_week}>
+					<button className={`${style.goal_week_day} concert_one_regular`} onClick={() => { setGoalDayEditting(true); }}>
+						M
+						<Icon iconName={"star"} />
+						<div className={style.goal_week_day_data}>
+							<div>
+								<p>Weight</p>
+								<p>150 lbs</p>
+							</div>
+							<div>
+								<p>Calories</p>
+								<p>2500 Cal</p>
+							</div>
+						</div>
+					</button>
+					<button className={`${style.goal_week_day} concert_one_regular`} onClick={() => { setGoalDayEditting(true); }}>
+						T
+						<div className={style.goal_week_day_data}>
+							<div>
+								<p>Weight</p>
+								<p>150 lbs</p>
+							</div>
+							<div>
+								<p>Calories</p>
+								<p>2500 Cal</p>
+							</div>
+						</div>
+					</button>
+					<button className={`${style.goal_week_day} concert_one_regular`} onClick={() => { setGoalDayEditting(true); }}>
+						W
+						<div className={style.goal_week_day_data}>
+							<div>
+								<p>Weight</p>
+								<p>150 lbs</p>
+							</div>
+							<div>
+								<p>Calories</p>
+								<p>2500 Cal</p>
+							</div>
+						</div>
+					</button>
+					<button className={`${style.goal_week_day} concert_one_regular`} onClick={() => { setGoalDayEditting(true); }}>
+						Th
+						<Icon iconName={"star"} />
+						<div className={style.goal_week_day_data}>
+							<div>
+								<p>Weight</p>
+								<p>--</p>
+							</div>
+							<div>
+								<p>Calories</p>
+								<p>--</p>
+							</div>
+						</div>
+					</button>
+					<button className={`${style.goal_week_day} concert_one_regular`} onClick={() => { setGoalDayEditting(true); }}>
+						F
+						<div className={style.goal_week_day_data}>
+							<div>
+								<p>Weight</p>
+								<p>150 lbs</p>
+							</div>
+							<div>
+								<p>Calories</p>
+								<p>2500 Cal</p>
+							</div>
+						</div>
+					</button>
+					<button className={`${style.goal_week_day} concert_one_regular`} onClick={() => { setGoalDayEditting(true); }}>
+						S
+						<div className={style.goal_week_day_data}>
+							<div>
+								<p>Weight</p>
+								<p>150 lbs</p>
+							</div>
+							<div>
+								<p>Calories</p>
+								<p>2500 Cal</p>
+							</div>
+						</div>
+					</button>
+					<button className={`${style.goal_week_day} concert_one_regular`} onClick={() => { setGoalDayEditting(true); }}>
+						Su
+						<div className={style.goal_week_day_data}>
+							<div>
+								<p>Weight</p>
+								<p>150 lbs</p>
+							</div>
+							<div>
+								<p>Calories</p>
+								<p>2500 Cal</p>
+							</div>
+						</div>
+					</button>
+				</div>
+				<div className={style.goal_all}>
+					<h1>Goals</h1>
+					<div className={style.goal_weight}>
+						<p>Goal weight: 120lb</p>
+						<button className={`${style.budget_planner_change_store} concert_one_regular`}>
+							Change
+						</button>
+					</div>
+					<div className={style.goal_calories}>
+						<p>Calories: {user?.goals?.targetCalories}cal</p>
+						<button className={`${style.budget_planner_change_store} concert_one_regular`} onClick={() => { setGoalEditOpen(true) }}>
+							Change
+						</button>
+					</div>
+				</div>
+				<div className={style.goal_success}>
+					<h3>Completions</h3>
+					<ResponsiveContainer className={style.goal_success_chart_container}>
+						<BarChart className={style.goal_success_chart} data={GoalSuccessData} margin={{ top: 10, right: 10, left: 10, bottom: 10 }}>
+							<XAxis dataKey={"month"} />
+							<YAxis />
+							<Tooltip wrapperStyle={{ backgroundColor: "var(--foreground)", color: "var(--text)" }} />
+							<Bar dataKey="Completions" fill="#11ab11" />
+						</BarChart>
+					</ResponsiveContainer>
+				</div>
+				{
+					goalDayEdit ? (
+						<GoalDayEdit />
+					) : (
+						<></>
+					)
+				}
+				{
+					goalEditOpen ? (<GoalEdit />) : (<></>)
+				}
+			</div>
+		</GoalEditOpenContext.Provider>
+>>>>>>> d56753b (started and got user object saving to a decent point)
 	)
 }
 
