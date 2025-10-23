@@ -4,7 +4,7 @@ import Icon from "../Icon";
 import style from "./Breakdown.module.css"
 import { createContext, useContext, useEffect, useState } from "react";
 import { UserContext } from "@/app/page";
-import { onAuthStateChanged } from "firebase/auth";
+// import { onAuthStateChanged } from "firebase/auth";
 
 const ChangingLocContext = createContext<[boolean, (value: boolean) => void]>([false, () => { }])
 
