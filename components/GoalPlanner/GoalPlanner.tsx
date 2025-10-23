@@ -2,7 +2,8 @@ import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recha
 import style from "./GoalPlanner.module.css"
 import Icon from "@/components/Icon"
 import { createContext, useContext, useState } from "react"
-import { User, UserContext, UserGoals } from "@/app/page"
+import { User, UserGoals } from "@/app/page"
+import { UserContext } from "@/app/contexts"
 
 const GoalEditOpenContext = createContext<[boolean, (val: boolean) => void]>([false, () => { }])
 const GoalDayEditOpenContext = createContext<[boolean, (val: boolean) => void]>([false, () => { }])
@@ -237,7 +238,7 @@ function GoalEdit() {
 }
 
 function GoalDayEdit() {
-	const [user, setUser] = useContext(UserContext)
+	const [user,] = useContext(UserContext)
 	const [, setGoalDayEditOpen] = useContext(GoalDayEditOpenContext)
 	return (
 		<div className={style.goal_day_edit}>

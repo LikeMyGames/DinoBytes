@@ -3,14 +3,14 @@ import { KrogerLocation, KrogerLocationSearch } from "@/lib/kroger";
 import Icon from "../Icon";
 import style from "./Breakdown.module.css"
 import { createContext, useContext, useEffect, useState } from "react";
-import { UserContext } from "@/app/page";
+import { UserContext } from "@/app/contexts";
 // import { onAuthStateChanged } from "firebase/auth";
 
 const ChangingLocContext = createContext<[boolean, (value: boolean) => void]>([false, () => { }])
 
 export function Breakdown() {
 	const [changingLoc, setChangingLoc] = useState(false)
-	const [user, setUser] = useContext(UserContext)
+	const [user,] = useContext(UserContext)
 
 	return (
 		<ChangingLocContext.Provider value={[changingLoc, setChangingLoc]}>

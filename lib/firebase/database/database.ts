@@ -1,7 +1,9 @@
+'use server'
 import { User } from "@/app/page";
-import { app } from "../firebase";
+import { GetApp } from "../firebase";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
+const app = await GetApp();
 const db = getFirestore(app);
 
 export async function GetUserData(uid: string): Promise<User | null> {

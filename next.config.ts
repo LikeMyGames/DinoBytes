@@ -7,9 +7,6 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'www.kroger.com',
-        port: '',
-        pathname: '',
-        search: '',
       }
     ]
   }

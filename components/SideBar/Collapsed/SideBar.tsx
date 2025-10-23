@@ -5,7 +5,7 @@ import DinoBytes_icon from "@/public/DinoBytes_icon_light 512x512.png"
 import Icon from "@/components/Icon";
 import { CollaspedContext } from "../SideBar";
 import Redirect from "./Redirect";
-import { ScreenContext } from "@/app/page";
+import { ScreenContext } from "@/app/contexts";
 
 export default function SideBarExpanded() {
 	const [, setCollapsed] = useContext(CollaspedContext)

@@ -1,6 +1,6 @@
 import style from "./Settings.module.css"
 import Icon from "@/components/Icon";
-import { UserContext } from "@/app/page";
+import { UserContext } from "@/app/contexts";
 import { useContext } from "react";
 import { SaveUserData } from "@/lib/firebase/database/database"
 

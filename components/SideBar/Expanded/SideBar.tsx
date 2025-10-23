@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styles from "./SideBar.module.css"
-import { ScreenContext, UserContext } from "@/app/page";
+import { ScreenContext, UserContext } from "@/app/contexts";
 import Image from "next/image"
 import DinoBytes_icon from "@/public/DinoBytes_icon_light 512x512.png"
 import Redirect from "./Redirect";

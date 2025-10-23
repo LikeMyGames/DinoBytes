@@ -4,12 +4,13 @@
 'use client'
 import style from "./MealPlanner.module.css"
 // import { useState } from "react"
-import { Item, List, User, UserContext } from "@/app/page"
+import { Item, List, User } from "@/app/page"
 import { PieChart, Pie, Cell } from "recharts"
 import Icon from "@/components/Icon"
 import { createContext, useContext, useEffect, useRef, useState } from "react"
 import { SearchKrogerAPI } from "@/lib/kroger"
 import { queryFood } from "@/lib/food"
+import { UserContext } from "@/app/contexts"
 
 const AddingItemContext = createContext<[boolean, (value: boolean) => void]>([false, () => { }])
 const ActiveListContext = createContext<string>("")

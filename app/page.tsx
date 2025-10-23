@@ -1,6 +1,6 @@
 'use client'
 import styles from "./page.module.css";
-import { useState, createContext, useRef } from "react";
+import { useState, useRef } from "react";
 import MealPlanner from "@/components/MealPlanner/MealPlanner";
 import SideBar from "@/components/SideBar/SideBar";
 import { GoalPlanner } from "@/components/GoalPlanner/GoalPlanner";
@@ -11,6 +11,7 @@ import { Login } from "@/components/Login/Login"
 import { KrogerItem, KrogerLocation } from "@/lib/kroger";
 import { SaveUserData } from "@/lib/firebase/database/database";
 import { FoodData } from "@/lib/food";
+import { ScreenContext, UserContext } from "./contexts";
 
 export type User = {
 	uid: string,
@@ -41,10 +42,6 @@ export type Item = {
 	foodData?: FoodData,
 	KrogerItem?: KrogerItem,
 }
-
-export const ScreenContext = createContext<[string, (value: string) => void]>(["Breakdown", () => { }])
-export const ListsContext = createContext<[List, (value: List) => void]>([{}, () => { }])
-export const UserContext = createContext<[User | null, (value: User | null) => void]>([{ uid: "" }, () => { }])
 
 export default function Home() {
 	const [screen, setScreen] = useState<string>("Breakdown")

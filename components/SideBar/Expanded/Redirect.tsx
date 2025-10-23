@@ -1,4 +1,4 @@
-import { ScreenContext } from "@/app/page"
+import { ScreenContext } from "@/app/contexts"
 import styles from "./SideBar.module.css"
 import { useContext } from "react"
 import Icon from "@/components/Icon"

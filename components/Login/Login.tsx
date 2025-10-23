@@ -3,7 +3,7 @@ import style from "./Login.module.css"
 import GoogleIcon from "@/public/google.png"
 import Image from "next/image"
 import { CreateUserEmailPassword, SignInEmailPassword, SignInGoogle } from "@/lib/firebase/auth/auth"
-import { UserContext } from "@/app/page"
+import { UserContext } from "@/app/contexts"
 
 export function Login() {
 	const [email, setEmail] = useState<string>("")

@@ -1,5 +1,6 @@
-import { app } from "../firebase";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+'use server'
+import { GetApp } from "../firebase";
+import { Auth, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 import { User } from "@/app/page"
 import { CreateUserData, GetUserData } from "../database/database";
@@ -11,8 +12,14 @@ providerGoogle.setCustomParameters({
     'login_hint': 'user@example.com'
 });
 
-export const auth = getAuth(app)
+const app = await GetApp()
+
+const auth = getAuth(app)
 auth.languageCode = 'it'
+
+export async function GetAuth(): Promise<Auth> {
+    return auth
+}
 
 export async function CreateUserEmailPassword(email: string, password: string): Promise<User | null> {
     try {
