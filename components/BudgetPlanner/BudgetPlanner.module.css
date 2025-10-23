@@ -38,7 +38,7 @@
 
 .store_change {
     justify-self: flex-end;
-    background-color: var(--tertiary);
+    background-color: transparent;
     border: none;
     display: grid;
     /* justify-content: center; */
@@ -107,7 +107,7 @@
 
 .budget_change {
     justify-self: flex-end;
-    background-color: var(--tertiary);
+    background-color: transparent;
     border: none;
     display: grid;
     /* justify-content: center; */
@@ -129,7 +129,7 @@
     grid-column: 3 / 4;
     grid-row: 1 / 2;
     font-size: 22px;
-    color: var(--foreground)
+    color: var(--foreground);
 }
 
 .budget_change:hover>span {
@@ -192,7 +192,7 @@
 .add_item {
     justify-self: flex-end;
     align-self: flex-end;
-    background-color: var(--tertiary);
+    background-color: transparent;
     border: none;
     display: grid;
     /* justify-content: center; */
