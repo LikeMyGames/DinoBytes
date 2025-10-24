@@ -2,7 +2,7 @@ import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recha
 import style from "./GoalPlanner.module.css"
 import Icon from "@/components/Icon"
 import { createContext, useContext, useState } from "react"
-import { User, UserGoals } from "@/app/page"
+import { List, User, UserGoals } from "@/app/page"
 import { UserContext } from "@/app/contexts"
 
 const GoalEditOpenContext = createContext<[boolean, (val: boolean) => void]>([false, () => { }])
@@ -237,8 +237,83 @@ function GoalEdit() {
 }
 
 function GoalDayEdit() {
-	const [user,] = useContext(UserContext)
+	const [user, setUser] = useContext(UserContext)
 	const [, setGoalDayEditOpen] = useContext(GoalDayEditOpenContext)
+	let breakfastCal = 0
+	const todayKey = new Date().toDateString()
+	let lunchCal = 0
+	let dinnerCal = 0
+	let snacksCal = 0
+	if (user?.history?.[todayKey].breakfast) {
+		user?.history?.[todayKey].breakfast?.map((item) => {
+			console.log(item.foodData)
+			breakfastCal += item.foodData?.["energy-kcal"] ?? 0
+		})
+	} else {
+		setUser({
+			...user,
+			history: {
+				...((user?.history as Record<string, List>) ?? []),
+				[todayKey]: {
+					...((user?.history?.[todayKey] as any) ?? []),
+					breakfast: []
+				}
+			}
+		} as User)
+	}
+
+	if (user?.history?.[todayKey].lunch) {
+		user?.history?.[todayKey].lunch?.map((item) => {
+			console.log(item.foodData)
+			lunchCal += item.foodData?.["energy-kcal"] ?? 0
+		})
+	} else {
+		setUser({
+			...user,
+			history: {
+				...((user?.history as Record<string, List>) ?? []),
+				[todayKey]: {
+					...((user?.history?.[todayKey] as any) ?? []),
+					lunch: []
+				}
+			}
+		} as User)
+	}
+
+	if (user?.history?.[todayKey].dinner) {
+		user?.history?.[todayKey].dinner?.map((item) => {
+			console.log(item.foodData)
+			dinnerCal += item.foodData?.["energy-kcal"] ?? 0
+		})
+	} else {
+		setUser({
+			...user,
+			history: {
+				...((user?.history as Record<string, List>) ?? []),
+				[todayKey]: {
+					...((user?.history?.[todayKey] as any) ?? []),
+					dinner: []
+				}
+			}
+		} as User)
+	}
+
+	if (user?.history?.[todayKey].snacks) {
+		user?.history?.[todayKey].snacks?.map((item) => {
+			snacksCal += item.foodData?.["energy-kcal"] ?? 0
+		})
+	} else {
+		setUser({
+			...user,
+			history: {
+				...((user?.history as Record<string, List>) ?? []),
+				[todayKey]: {
+					...((user?.history?.[todayKey] as any) ?? []),
+					snacks: []
+				}
+			}
+		} as User)
+	}
 	return (
 		<div className={style.goal_day_edit}>
 			<div className={style.goal_day_edit_card}>
@@ -246,21 +321,6 @@ function GoalDayEdit() {
 					Goal Calories:
 					{breakfastCal + lunchCal + dinnerCal + snacksCal}/{user?.goals?.targetCalories}
 					Cal
-				</div>
-				<div>
-					Goal Protein:
-					15500/{user?.goals?.targetProtein}
-					g
-				</div>
-				<div>
-					Goal Carbs:
-					15/{user?.goals?.targetCarbs}
-					g
-				</div>
-				<div>
-					Goal Fat:
-					25/{user?.goals?.targetFat}
-					g
 				</div>
 				<button className={style.goal_day_edit_close} onClick={() => { setGoalDayEditOpen(false) }}>
 					hello
