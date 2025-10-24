@@ -1,0 +1,111 @@
+{
+  "node": {
+    "60ac9f8735980645fb0ae228a310110ddbbbad8324": {
+      "workers": {
+        "app/page": {
+          "moduleId": "32152",
+          "async": true,
+          "exportedName": "SearchKrogerAPI",
+          "filename": "lib/kroger.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "lib/kroger.ts",
+      "exportedName": "SearchKrogerAPI"
+    },
+    "4095c04a0e9fec9e5c44989f5d7fccab90ef909f7d": {
+      "workers": {
+        "app/page": {
+          "moduleId": "32152",
+          "async": true,
+          "exportedName": "queryFood",
+          "filename": "lib/food.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "lib/food.ts",
+      "exportedName": "queryFood"
+    },
+    "60c0d6505d179a6c1a2920ba74eb57edf21223f6a1": {
+      "workers": {
+        "app/page": {
+          "moduleId": "32152",
+          "async": true,
+          "exportedName": "KrogerLocationSearch",
+          "filename": "lib/kroger.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "lib/kroger.ts",
+      "exportedName": "KrogerLocationSearch"
+    },
+    "401bbe0523ca7e7ad4a0532a4104503879547d6689": {
+      "workers": {
+        "app/page": {
+          "moduleId": "32152",
+          "async": true,
+          "exportedName": "SaveUserData",
+          "filename": "lib/firebase/database/database.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "lib/firebase/database/database.ts",
+      "exportedName": "SaveUserData"
+    },
+    "60df83dd0ee9a0cea26043a3ee6c378bfbc402b6c1": {
+      "workers": {
+        "app/page": {
+          "moduleId": "32152",
+          "async": true,
+          "exportedName": "CreateUserEmailPassword",
+          "filename": "lib/firebase/auth/auth.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "lib/firebase/auth/auth.ts",
+      "exportedName": "CreateUserEmailPassword"
+    },
+    "60201507bdaac03853d37bd6b29949aeb42173ffc4": {
+      "workers": {
+        "app/page": {
+          "moduleId": "32152",
+          "async": true,
+          "exportedName": "SignInEmailPassword",
+          "filename": "lib/firebase/auth/auth.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "lib/firebase/auth/auth.ts",
+      "exportedName": "SignInEmailPassword"
+    },
+    "00aef2ba6a989c34d4156651871107c685f3e5c393": {
+      "workers": {
+        "app/page": {
+          "moduleId": "32152",
+          "async": true,
+          "exportedName": "SignInGoogle",
+          "filename": "lib/firebase/auth/auth.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "lib/firebase/auth/auth.ts",
+      "exportedName": "SignInGoogle"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "RIk1+gkgmI0Jf+JL8YUKL4dyfaVml7QaeOmK6s9x6wg="
+}
