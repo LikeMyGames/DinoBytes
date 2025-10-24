@@ -26,4 +26,7 @@
             "service": "dino-bytes",
         },
     ],
+    "vars": {
+        "OPENNEXT_SERVER_FUNCTION_DIR": ".open-next/server-functions"
+    },
 }
