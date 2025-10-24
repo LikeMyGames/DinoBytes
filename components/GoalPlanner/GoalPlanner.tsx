@@ -25,11 +25,10 @@ export function GoalPlanner() {
 
 	const [goalDayEdit, setGoalDayEditting] = useState<boolean>(false)
 	const [goalEditOpen, setGoalEditOpen] = useState<boolean>(false)
-	const [goalDayOpen, setGoalDayEditOpen] = useState<boolean>(false)
 	const [user,] = useContext(UserContext)
 
 	return (
-		<GoalDayEditOpenContext.Provider value={[goalDayOpen, setGoalDayEditOpen]}>
+		<GoalDayEditOpenContext.Provider value={[goalDayEdit, setGoalDayEditting]}>
 			<GoalEditOpenContext.Provider value={[goalEditOpen, setGoalEditOpen]}>
 				<div className={style.goal_container}>
 					<div className={style.goal_week}>
@@ -245,22 +244,22 @@ function GoalDayEdit() {
 			<div className={style.goal_day_edit_card}>
 				<div>
 					Goal Calories:
-					{user?.goals?.targetCalories}
+					{breakfastCal + lunchCal + dinnerCal + snacksCal}/{user?.goals?.targetCalories}
 					Cal
 				</div>
 				<div>
 					Goal Protein:
-					{user?.goals?.targetProtein}
+					15500/{user?.goals?.targetProtein}
 					g
 				</div>
 				<div>
 					Goal Carbs:
-					{user?.goals?.targetCarbs}
+					15/{user?.goals?.targetCarbs}
 					g
 				</div>
 				<div>
 					Goal Fat:
-					{user?.goals?.targetFat}
+					25/{user?.goals?.targetFat}
 					g
 				</div>
 				<button className={style.goal_day_edit_close} onClick={() => { setGoalDayEditOpen(false) }}>
