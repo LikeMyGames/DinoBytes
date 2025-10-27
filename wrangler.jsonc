@@ -1,6 +1,6 @@
 {
     "$schema": "node_modules/wrangler/config-schema.json",
-    "main": ".open-next/worker.js",
+    "main": ".open-next/cloudflare-templates/worker.js",
     "name": "dino-bytes",
     "compatibility_date": "2025-03-25",
     "compatibility_flags": [
@@ -25,8 +25,5 @@
             // The service should match the "name" of your worker
             "service": "dino-bytes",
         },
-    ],
-    "vars": {
-        "OPENNEXT_SERVER_FUNCTION_DIR": ".open-next/server-functions/default/.next/server"
-    }
+    ]
 }
