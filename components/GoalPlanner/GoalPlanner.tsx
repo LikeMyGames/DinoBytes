@@ -255,7 +255,7 @@ function GoalDayEdit() {
 			history: {
 				...((user?.history as Record<string, List>) ?? []),
 				[todayKey]: {
-					...((user?.history?.[todayKey] as any) ?? []),
+					...((user?.history?.[todayKey] as List) ?? []),
 					breakfast: []
 				}
 			}
@@ -273,7 +273,7 @@ function GoalDayEdit() {
 			history: {
 				...((user?.history as Record<string, List>) ?? []),
 				[todayKey]: {
-					...((user?.history?.[todayKey] as any) ?? []),
+					...((user?.history?.[todayKey] as List) ?? []),
 					lunch: []
 				}
 			}
@@ -291,7 +291,7 @@ function GoalDayEdit() {
 			history: {
 				...((user?.history as Record<string, List>) ?? []),
 				[todayKey]: {
-					...((user?.history?.[todayKey] as any) ?? []),
+					...((user?.history?.[todayKey] as List) ?? []),
 					dinner: []
 				}
 			}
@@ -308,7 +308,7 @@ function GoalDayEdit() {
 			history: {
 				...((user?.history as Record<string, List>) ?? []),
 				[todayKey]: {
-					...((user?.history?.[todayKey] as any) ?? []),
+					...((user?.history?.[todayKey] as List) ?? []),
 					snacks: []
 				}
 			}
