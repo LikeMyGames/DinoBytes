@@ -27,6 +27,6 @@
         },
     ],
     "vars": {
-        "OPENNEXT_SERVER_FUNCTION_DIR": ".open-next/server-function"
+        "OPENNEXT_SERVER_FUNCTION_DIR": ".open-next/server-functions/default/.next/server"
     }
 }
