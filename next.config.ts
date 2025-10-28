@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   output: 'export',
+  assetPrefix: '/out/',
   images: {
     remotePatterns: [
       {
@@ -10,7 +11,8 @@ const nextConfig: NextConfig = {
         hostname: 'www.kroger.com',
       }
     ]
-  }
+  },
+
 };
 
 export default nextConfig;
