@@ -1,19 +1,15 @@
 {
     "$schema": "node_modules/wrangler/config-schema.json",
-    "main": ".open-next/cloudflare-templates/worker.js",
+    "main": ".open-next/worker.js",
     "name": "dino-bytes",
-    "compatibility_date": "2025-03-25",
+    "compatibility_date": "2025-10-27",
     "compatibility_flags": [
+        // Enable Node.js API
+        // see https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag
         "nodejs_compat",
+        // Allow to fetch URLs in your app
+        // see https://developers.cloudflare.com/workers/configuration/compatibility-flags/#global-fetch-strictly-public
         "global_fetch_strictly_public",
-    ],
-    "observability": {
-        "logs": {
-            "enabled": true
-        }
-    },
-    "routes": [
-        "dino-bytes.dcamill.com"
     ],
     "assets": {
         "directory": ".open-next/assets",
@@ -25,5 +21,12 @@
             // The service should match the "name" of your worker
             "service": "dino-bytes",
         },
-    ]
+    ],
+    "r2_buckets": [
+        // Create a R2 binding with the binding name "NEXT_INC_CACHE_R2_BUCKET"
+        // {
+        //   "binding": "NEXT_INC_CACHE_R2_BUCKET",
+        //   "bucket_name": "<BUCKET_NAME>",
+        // },
+    ],
 }
