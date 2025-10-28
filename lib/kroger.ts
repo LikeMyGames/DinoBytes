@@ -71,8 +71,6 @@ type Geolocation = {
 	longitude: number
 }
 
-const TOKEN = ""
-
 export async function KrogerAuth(): Promise<string> {
 	// const res = await fetch(`https://api-ce.kroger.com/v1/connect/oauth2/token`, {
 	// 	method: 'POST',
@@ -94,7 +92,7 @@ export async function KrogerAuth(): Promise<string> {
 	// 	}
 	// }
 
-	const res = await fetch("http://127.0.0.1:8787/kroger", {
+	const res = await fetch(`${window.location.origin}/kroger`, {
 		body: JSON.stringify({ action: 'auth' })
 	})
 	console.log(res)
@@ -102,15 +100,21 @@ export async function KrogerAuth(): Promise<string> {
 }
 
 export async function SearchKrogerAPI(query: string, locationId: string): Promise<KrogerItem[]> {
-	const accToken = TOKEN ? TOKEN : ''
+	// const accToken = TOKEN ? TOKEN : ''
 	const products: KrogerItem[] = []
-	const res = await fetch(`https://api-ce.kroger.com/v1/products?filter.term=${query}&filter.location=${locationId}`, {
-		method: 'GET',
-		headers: {
-			"Accept": "application/json",
-			"Authorization": `Bearer ${accToken}`
-		}
+	// const res = await fetch(`https://api-ce.kroger.com/v1/products?filter.term=${query}&filter.location=${locationId}`, {
+	// 	method: 'GET',
+	// 	headers: {
+	// 		"Accept": "application/json",
+	// 		"Authorization": `Bearer ${accToken}`
+	// 	}
+	// })
+
+	const res = await fetch(`${window.location.origin}/kroger`, {
+		body: JSON.stringify({ action: "search", query: query, locationId: locationId })
 	})
+	console.log(res)
+
 	const data = await res.json()
 	if (!data.data) {
 		return products
@@ -156,16 +160,22 @@ export async function SearchKrogerAPI(query: string, locationId: string): Promis
 	return products
 }
 export async function KrogerLocationSearch(lat: number, long: number): Promise<KrogerLocation[] | null> {
-	const accToken = TOKEN ? TOKEN : ''
+	// const accToken = TOKEN ? TOKEN : ''
 	const location: KrogerLocation[] = []
-	const res = await fetch(`https://api-ce.kroger.com/v1/locations?filter.latLong.near=${lat},${long}&filter.radiusInMiles=5`, {
-		method: 'GET',
-		headers: {
-			"Accept": "application/json",
-			"Authorization": `Bearer ${accToken}`
-		},
-		body: JSON.stringify({ action: "location" })
+	// const res = await fetch(`https://api-ce.kroger.com/v1/locations?filter.latLong.near=${lat},${long}&filter.radiusInMiles=5`, {
+	// 	method: 'GET',
+	// 	headers: {
+	// 		"Accept": "application/json",
+	// 		"Authorization": `Bearer ${accToken}`
+	// 	},
+	// 	body: JSON.stringify({ action: "location" })
+	// })
+	const res = await fetch(`${window.location.origin}/kroger`, {
+		body: JSON.stringify({ action: "location", lat: lat, long: long })
 	})
+
+	console.log(res)
+
 	const data = await res.json()
 	if (!data.data) {
 		return Promise.resolve(null)
