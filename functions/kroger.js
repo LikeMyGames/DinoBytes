@@ -1,4 +1,6 @@
 export async function onRequest(context) {
+    console.log(context)
+    console.log(context.request.body)
     const body = JSON.parse(context.request.body)
     console.log(body)
     switch (body.action) {

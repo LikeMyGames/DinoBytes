@@ -92,7 +92,10 @@ export async function KrogerAuth(): Promise<string> {
 	// 	}
 	// }
 
+	console.log()
+
 	const res = await fetch(`${window.location.origin}/kroger`, {
+		method: 'POST',
 		body: JSON.stringify({ action: 'auth' })
 	})
 	console.log(res)
@@ -111,6 +114,7 @@ export async function SearchKrogerAPI(query: string, locationId: string): Promis
 	// })
 
 	const res = await fetch(`${window.location.origin}/kroger`, {
+		method: 'POST',
 		body: JSON.stringify({ action: "search", query: query, locationId: locationId })
 	})
 	console.log(res)
@@ -171,6 +175,7 @@ export async function KrogerLocationSearch(lat: number, long: number): Promise<K
 	// 	body: JSON.stringify({ action: "location" })
 	// })
 	const res = await fetch(`${window.location.origin}/kroger`, {
+		method: 'POST',
 		body: JSON.stringify({ action: "location", lat: lat, long: long })
 	})
 
