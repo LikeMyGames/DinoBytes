@@ -71,30 +71,38 @@ type Geolocation = {
 	longitude: number
 }
 
+const TOKEN = ""
+
 export async function KrogerAuth(): Promise<string> {
-	const res = await fetch(`https://api-ce.kroger.com/v1/connect/oauth2/token`, {
-		method: 'POST',
-		headers: {
-			"Content-Type": "application/x-www-form-urlencoded",
-			"Access-Control-Allow-Origin": "*",
-			"Authorization": `Basic ${Buffer.from(`${process.env.NEXT_PUBLIC_KROGER_CLIENT_ID}:${process.env.NEXT_PUBLIC_KROGER_CLIENT_SECRET}`).toString("base64")}`
-		},
-		body: new URLSearchParams({
-			grant_type: "client_credentials",
-			scope: "product.compact"
-		}).toString()
+	// const res = await fetch(`https://api-ce.kroger.com/v1/connect/oauth2/token`, {
+	// 	method: 'POST',
+	// 	headers: {
+	// 		"Content-Type": "application/x-www-form-urlencoded",
+	// 		"Access-Control-Allow-Origin": "*",
+	// 		"Authorization": `Basic ${Buffer.from(`${process.env.NEXT_PUBLIC_KROGER_CLIENT_ID}:${process.env.NEXT_PUBLIC_KROGER_CLIENT_SECRET}`).toString("base64")}`
+	// 	},
+	// 	body: new URLSearchParams({
+	// 		grant_type: "client_credentials",
+	// 		scope: "product.compact"
+	// 	}).toString()
+	// })
+	// if (res) {
+	// 	const data = await res.json()
+	// 	if (data && data.access_token) {
+	// 		TOKEN = data.access_token
+	// 		return data.access_token;
+	// 	}
+	// }
+
+	const res = await fetch("http://127.0.0.1:8787/kroger", {
+		body: JSON.stringify({ action: 'auth' })
 	})
-	if (res) {
-		const data = await res.json()
-		if (data && data.access_token) {
-			return data.access_token;
-		}
-	}
+	console.log(res)
 	return "";
 }
 
 export async function SearchKrogerAPI(query: string, locationId: string): Promise<KrogerItem[]> {
-	const accToken = await KrogerAuth()
+	const accToken = TOKEN ? TOKEN : ''
 	const products: KrogerItem[] = []
 	const res = await fetch(`https://api-ce.kroger.com/v1/products?filter.term=${query}&filter.location=${locationId}`, {
 		method: 'GET',
@@ -148,14 +156,15 @@ export async function SearchKrogerAPI(query: string, locationId: string): Promis
 	return products
 }
 export async function KrogerLocationSearch(lat: number, long: number): Promise<KrogerLocation[] | null> {
-	const accToken = await KrogerAuth()
+	const accToken = TOKEN ? TOKEN : ''
 	const location: KrogerLocation[] = []
 	const res = await fetch(`https://api-ce.kroger.com/v1/locations?filter.latLong.near=${lat},${long}&filter.radiusInMiles=5`, {
 		method: 'GET',
 		headers: {
 			"Accept": "application/json",
 			"Authorization": `Bearer ${accToken}`
-		}
+		},
+		body: JSON.stringify({ action: "location" })
 	})
 	const data = await res.json()
 	if (!data.data) {
