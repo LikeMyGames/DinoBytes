@@ -1,6 +1,5 @@
 'use client'
 
-import { OpenFoodFactsApi } from 'openfoodfac-ts';
 const FOOD_API_URL = "https://world.openfoodfacts.net/"
 
 export type FoodData = {
@@ -64,9 +63,16 @@ export type FoodData = {
 }
 
 export async function queryFood(barcode: string): Promise<FoodData | null> {
-    const openFoodFactsApi = new OpenFoodFactsApi();
+    // const openFoodFactsApi = new OpenFoodFactsApi({
+
+    // });
     try {
-        const product = await openFoodFactsApi.findProductByBarcode(barcode);
+        // const product = await openFoodFactsApi.findProductByBarcode(barcode);
+        const res = await fetch(`us.openfoodfacts.org/api/v0/products/${barcode}.json`)
+        const product = await res.json()
+        if ((product as { status_verbose: string }).status_verbose == "product not found") {
+            return null
+        }
         if (product) {
             console.log(`Product Name: ${product.product_name}`);
             console.log(`Brands: ${product.brands}`);
@@ -75,7 +81,7 @@ export async function queryFood(barcode: string): Promise<FoodData | null> {
         } else {
             console.log(`Product with barcode ${barcode} not found.`);
         }
-        return product?.nutriments as FoodData
+        return (product as { nutriments?: FoodData })?.nutriments as FoodData
     } catch (error) {
         console.error('Error fetching product:', error);
     }

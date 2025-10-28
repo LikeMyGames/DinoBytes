@@ -76,7 +76,8 @@ export async function KrogerAuth(): Promise<string> {
 		method: 'POST',
 		headers: {
 			"Content-Type": "application/x-www-form-urlencoded",
-			"Authorization": `Basic ${Buffer.from(`${process.env.KROGER_CLIENT_ID}:${process.env.KROGER_CLIENT_SECRET}`).toString("base64")}`
+			"Access-Control-Allow-Origin": "*",
+			"Authorization": `Basic ${Buffer.from(`${process.env.NEXT_PUBLIC_KROGER_CLIENT_ID}:${process.env.NEXT_PUBLIC_KROGER_CLIENT_SECRET}`).toString("base64")}`
 		},
 		body: new URLSearchParams({
 			grant_type: "client_credentials",
@@ -103,8 +104,6 @@ export async function SearchKrogerAPI(query: string, locationId: string): Promis
 		}
 	})
 	const data = await res.json()
-	console.log(res)
-	console.log(data)
 	if (!data.data) {
 		return products
 	}
@@ -146,8 +145,6 @@ export async function SearchKrogerAPI(query: string, locationId: string): Promis
 		products[products.length] = item
 	})
 
-	console.log(products)
-
 	return products
 }
 export async function KrogerLocationSearch(lat: number, long: number): Promise<KrogerLocation[] | null> {
@@ -160,12 +157,10 @@ export async function KrogerLocationSearch(lat: number, long: number): Promise<K
 			"Authorization": `Bearer ${accToken}`
 		}
 	})
-	console.log(res)
 	const data = await res.json()
 	if (!data.data) {
 		return Promise.resolve(null)
 	}
-	console.log(data)
 	data.data.forEach((val: KrogerLocation) => {
 		location[location.length] = val
 	})
