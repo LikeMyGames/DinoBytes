@@ -1,6 +1,4 @@
-'use server'
-
-import { cookies } from "next/headers"
+'use client'
 
 export type KrogerItem = {
 	productName?: string,
@@ -88,8 +86,6 @@ export async function KrogerAuth(): Promise<string> {
 	if (res) {
 		const data = await res.json()
 		if (data && data.access_token) {
-			const cookieStore = await cookies()
-			cookieStore.set("KrogerAccessToken", data.access_token)
 			return data.access_token;
 		}
 	}

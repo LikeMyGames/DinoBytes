@@ -1,4 +1,4 @@
-'use server'
+'use client'
 
 import { OpenFoodFactsApi } from 'openfoodfac-ts';
 const FOOD_API_URL = "https://world.openfoodfacts.net/"

@@ -1,4 +1,4 @@
-'use server'
+'use client'
 import { GetApp } from "../firebase";
 import { Auth, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";

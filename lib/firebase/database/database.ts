@@ -1,4 +1,4 @@
-'use server'
+'use client'
 import { User } from "@/app/page";
 import { GetApp } from "../firebase";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
